@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01/">
+        <link rel="canonical" href="https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01_DHCP/">
       
       
         <link rel="prev" href="..">
@@ -23,7 +23,7 @@
     
     
       
-        <title>UD01 - SERVICIOS EN RED</title>
+        <title>UD01_DHCP - SERVICIOS EN RED</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ud01" class="md-skip">
+        <a href="#unidad-1-servicio-dhcp" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UD01
+              UD01_DHCP
             
           </span>
         </div>
@@ -232,6 +232,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD01_DHCP
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -239,7 +257,7 @@
   <span class="md-ellipsis">
     
   
-    UD01
+    UD01_DHCP
   
 
     
@@ -248,6 +266,97 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ventajas-del-uso-del-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ventajas del Uso del Servicio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-funcionamiento-y-tipos-de-mensajes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Funcionamiento y Tipos de Mensajes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Funcionamiento y Tipos de Mensajes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secuencia-de-negociacion-proceso-dora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secuencia de Negociación (Proceso DORA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-mensajes-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipos de Mensajes DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-archivo-de-configuracion-dhcpdconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Archivo de Configuración (dhcpd.conf)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -273,6 +382,86 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ventajas-del-uso-del-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ventajas del Uso del Servicio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-funcionamiento-y-tipos-de-mensajes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Funcionamiento y Tipos de Mensajes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Funcionamiento y Tipos de Mensajes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secuencia-de-negociacion-proceso-dora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secuencia de Negociación (Proceso DORA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-mensajes-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tipos de Mensajes DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-archivo-de-configuracion-dhcpdconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Archivo de Configuración (dhcpd.conf)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -288,7 +477,79 @@
 
 
 
-<h1 id="ud01">UD01</h1>
+<h1 id="unidad-1-servicio-dhcp">Unidad 1: Servicio DHCP</h1>
+<hr />
+<h2 id="1-introduccion">1. Introducción</h2>
+<p>Para que un dispositivo pueda operar e identificarse de forma unívoca en una red informática, requiere disponer de una dirección IP única. Cuando el volumen de equipos (ordenadores, servidores, impresoras) crece, la asignación e introducción manual de direcciones resulta tediosa, repetitiva y compleja de administrar.</p>
+<p>Para solventar esta problemática se utiliza el servicio <strong>DHCP</strong> (<em>Dynamic Host Configuration Protocol</em>), el cual automatiza la entrega dinámica y centralizada de direcciones IP, máscaras de subred, puertas de enlace (<em>gateways</em>) y otros parámetros de red.</p>
+<hr />
+<h2 id="2-ventajas-del-uso-del-servicio">2. Ventajas del Uso del Servicio</h2>
+<ul>
+<li><strong>Centralización de la administración:</strong> Toda la topología de direccionamiento se gestiona desde el archivo de configuración del servidor.</li>
+<li><strong>Prevención de errores y conflictos:</strong> Evita la asignación accidental de direcciones IP duplicadas o configuraciones erróneas en los clientes.</li>
+<li><strong>Ahorro de tiempo operativo:</strong> Prescinde de la necesidad de intervenir localmente en la configuración de red de cada equipo cliente.</li>
+</ul>
+<hr />
+<h2 id="3-funcionamiento-y-tipos-de-mensajes">3. Funcionamiento y Tipos de Mensajes</h2>
+<p>El servicio opera bajo una arquitectura <strong>Cliente-Servidor</strong>. Un cliente configurado para obtener direccionamiento automático iniciará un intercambio de paquetes para solicitar parámetros al servidor.</p>
+<p>Los parámetros habitualmente asignados son:</p>
+<ul>
+<li><strong>Dirección IP y Máscara de subred</strong></li>
+<li><strong>Servidores DNS</strong></li>
+<li><strong>Puerta de enlace (<em>Gateway</em>)</strong></li>
+</ul>
+<hr />
+<h3 id="secuencia-de-negociacion-proceso-dora">Secuencia de Negociación (Proceso DORA)</h3>
+<div class="admonition note">
+<p class="admonition-title">Flujo de comunicación entre Cliente y Servidor</p>
+<ol>
+<li>
+<p><strong>DHCP DISCOVERY</strong> <em>(Broadcast)</em><br />
+   El cliente no conoce la red y envía una solicitud por difusión a todos los equipos.</p>
+</li>
+<li>
+<p><strong>DHCP OFFER</strong> <em>(Unicast)</em><br />
+   El servidor revisa sus IP disponibles y le ofrece una al cliente con los parámetros de red.</p>
+</li>
+<li>
+<p><strong>DHCP REQUEST</strong> <em>(Broadcast)</em><br />
+   El cliente acepta la oferta y lo notifica a toda la red para que otros servidores lo sepan.</p>
+</li>
+<li>
+<p><strong>DHCP ACK / NACK</strong> <em>(Unicast)</em><br />
+   El servidor confirma la concesión (ACK) y registra la asignación, o la rechaza (NACK) si ya no es válida.</p>
+</li>
+</ol>
+</div>
+<p><img alt="Mensajes DHCP DORA" src="../img/DHCP_DORA.png" />
+<em>Figura 1: Funcionamiento de mensajes DHCP Server-Client  .</em></p>
+<hr />
+<h3 id="tipos-de-mensajes-dhcp">Tipos de Mensajes DHCP</h3>
+<ul>
+<li><strong>DHCP DISCOVERY:</strong> Mensaje de difusión (<em>broadcast</em>) que envía el cliente al conectarse a la red para localizar qué servidores DHCP hay disponibles.</li>
+<li><strong>DHCP OFFER:</strong> Respuesta enviada por el servidor con la propuesta de dirección IP y el resto de parámetros de configuración de red.</li>
+<li><strong>DHCP REQUEST:</strong> Mensaje del cliente aceptando la oferta recibida. Se envía en <em>broadcast</em> para que los demás servidores DHCP sepan que esa IP ya ha sido asignada.</li>
+<li><strong>DHCP ACK / NACK:</strong> <ul>
+<li><strong>ACK:</strong> El servidor confirma la configuración, la anota en sus registros y autoriza al cliente a usar la IP.</li>
+<li><strong>NACK:</strong> El servidor deniega la asignación si la IP no es válida para esa subred o ya está en uso.</li>
+</ul>
+</li>
+<li><strong>DHCP RELEASE:</strong> Mensaje opcional que transmite el cliente para liberar la IP asignada y finalizar el contrato de concesión antes de tiempo.</li>
+</ul>
+<hr />
+<h2 id="4-archivo-de-configuracion-dhcpdconf">4. Archivo de Configuración (<code>dhcpd.conf</code>)</h2>
+<p>En sistemas Linux, el archivo de configuración principal se ubica en el directorio <code>/etc/dhcp/dhcpd.conf</code>.</p>
+<p>El archivo se compone de <strong>parámetros</strong> (definen directivas globales o locales) y <strong>declaraciones</strong> (delimitan ámbitos como subredes, grupos o equipos):</p>
+<p>```text
+    # Parámetros globales
+    default-lease-time 86400;
+    max-lease-time 172800;</p>
+<h1 id="declaracion-de-subred">Declaración de Subred</h1>
+<p>subnet 192.168.1.0 netmask 255.255.255.0 {
+    range 192.168.1.11 192.168.1.29;
+    option routers 192.168.1.1;
+    option domain-name-servers 192.168.1.1, 8.8.8.8;
+}</p>
 
 
 
