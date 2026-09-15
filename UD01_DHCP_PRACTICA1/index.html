@@ -1,0 +1,861 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01_DHCP_PRACTICA1/">
+      
+      
+        <link rel="prev" href="../UD01_DHCP/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UD01_DHCP_PRACTICA1 - SERVICIOS EN RED</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud01-practica-dhcp-1" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="SERVICIOS EN RED" class="md-header__button md-logo" aria-label="SERVICIOS EN RED" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SERVICIOS EN RED
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD01_DHCP_PRACTICA1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SERVICIOS EN RED" class="md-nav__button md-logo" aria-label="SERVICIOS EN RED" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SERVICIOS EN RED
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unidades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD01_DHCP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD01_DHCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD01_DHCP_PRACTICA1
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD01_DHCP_PRACTICA1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-piensa-la-estructura-de-red-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Piensa la estructura de red virtual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configura-las-tarjetas-de-red-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configura las tarjetas de red virtuales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-identifica-las-interfaces-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Identifica las interfaces de red
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configura-las-redes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Configura las redes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-configura-el-servidor-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configura el servidor DHCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Configura el servidor DHCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-instalacion-del-servidor-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Instalación del servidor DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-configuracion-de-la-interfaz-etcdefaultisc-dhcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Configuración de la interfaz (/etc/default/isc-dhcp-server)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-configuracion-del-archivo-etcdhcpdhcpdconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Configuración del archivo /etc/dhcp/dhcpd.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-hagamos-la-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hagamos la prueba
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alguna-duda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Alguna duda?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-piensa-la-estructura-de-red-virtual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Piensa la estructura de red virtual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configura-las-tarjetas-de-red-virtuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configura las tarjetas de red virtuales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-identifica-las-interfaces-de-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Identifica las interfaces de red
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configura-las-redes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Configura las redes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-configura-el-servidor-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configura el servidor DHCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Configura el servidor DHCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-instalacion-del-servidor-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Instalación del servidor DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-configuracion-de-la-interfaz-etcdefaultisc-dhcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Configuración de la interfaz (/etc/default/isc-dhcp-server)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-configuracion-del-archivo-etcdhcpdhcpdconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Configuración del archivo /etc/dhcp/dhcpd.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-hagamos-la-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Hagamos la prueba
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alguna-duda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Alguna duda?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ud01-practica-dhcp-1">UD01: Práctica DHCP 1<a class="headerlink" href="#ud01-practica-dhcp-1" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="1-piensa-la-estructura-de-red-virtual">1. Piensa la estructura de red virtual<a class="headerlink" href="#1-piensa-la-estructura-de-red-virtual" title="Permanent link">&para;</a></h2>
+<p>Antes de empezar, es necesario tener clara la topología: un router de casa/clase que da acceso a Internet y a la LAN, y dentro de tu ordenador dos máquinas virtuales conectadas entre sí:</p>
+<ul>
+<li><strong>Máquina virtual 1 – Ubuntu Server</strong> (SERVIDOR/Router): con dos tarjetas de red, una hacia la LAN de casa/clase (<code>192.168.X.X</code>) y otra hacia la red interna con las máquinas virtuales (<code>172.1.a.1</code>).</li>
+<li><strong>Máquina virtual 2 – Xubuntu</strong> (CLIENTE): conectada únicamente a la red interna (<code>172.1.a.2</code>).</li>
+</ul>
+<p><img alt="Esquema de la red virtual" src="imagenes/01-esquema-red.png" />
+<em>Captura: diagrama o resultado de tu propia topología de red virtual.</em></p>
+<hr />
+<h2 id="2-configura-las-tarjetas-de-red-virtuales">2. Configura las tarjetas de red virtuales<a class="headerlink" href="#2-configura-las-tarjetas-de-red-virtuales" title="Permanent link">&para;</a></h2>
+<p>En VirtualBox (o el hipervisor que uses), configura las tarjetas de red de la máquina servidor:</p>
+<ul>
+<li><strong>Adaptador 1:</strong> conectado en modo <em>Adaptador puente</em>, para que salga a la LAN de casa/clase.</li>
+<li><strong>Adaptador 2:</strong> conectado en modo <em>Red interna</em> (o el modo que use tu topología), para comunicarse con la máquina cliente.</li>
+</ul>
+<p><img alt="Configuración de las tarjetas de red en VirtualBox" src="imagenes/02-configuracion-adaptadores.png" />
+<em>Captura: pantalla de Configuración &gt; Red de la máquina virtual, con los dos adaptadores configurados.</em></p>
+<hr />
+<h2 id="3-identifica-las-interfaces-de-red">3. Identifica las interfaces de red<a class="headerlink" href="#3-identifica-las-interfaces-de-red" title="Permanent link">&para;</a></h2>
+<p>Desde la máquina servidor, ejecuta el siguiente comando para listar las interfaces de red disponibles:</p>
+<div class="highlight"><pre><span></span><code>ip<span class="w"> </span>a
+</code></pre></div>
+<p>Identifica el nombre de cada interfaz (por ejemplo, <code>enp0s3</code> y <code>enp0s8</code>) y anota cuál corresponde a la LAN externa y cuál a la red interna con el cliente.</p>
+<p><img alt="Salida del comando ip a" src="imagenes/03-ip-a.png" />
+<em>Captura: terminal con el resultado del comando <code>ip a</code>, señalando las interfaces relevantes.</em></p>
+<hr />
+<h2 id="4-configura-las-redes">4. Configura las redes<a class="headerlink" href="#4-configura-las-redes" title="Permanent link">&para;</a></h2>
+<p>En la ruta <code>/etc/network</code> encontramos el archivo de interfaces de red y podemos configurarlo. Un ejemplo sería el siguiente:</p>
+<div class="highlight"><pre><span></span><code># This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo enp0s3 enp0s8
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp0s3
+iface enp0s3 inet dhcp
+
+iface enp0s8 inet static
+        address 172.1.2.1
+        netmask 255.255.255.0
+</code></pre></div>
+<blockquote>
+<p><strong>Nota:</strong> cada cambio en la red necesita reinicio: <code>sudo systemctl restart networking</code>.</p>
+</blockquote>
+<p><img alt="Archivo /etc/network/interfaces editado" src="imagenes/04-etc-network-interfaces.png" />
+<em>Captura: editor <code>nano</code> (o el que uses) mostrando tu archivo de configuración de red ya editado.</em></p>
+<hr />
+<h2 id="5-configura-el-servidor-dhcp">5. Configura el servidor DHCP<a class="headerlink" href="#5-configura-el-servidor-dhcp" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Instala el servidor DHCP llamado <code>isc-dhcp-server</code> en tu servidor.</li>
+<li>Configura la interfaz en el archivo del servidor DHCP que se encuentra en <code>/etc/default</code>.</li>
+<li>Configura el archivo de configuración que se encuentra en <code>/etc/dhcp</code>.</li>
+<li>Teniendo en cuenta los ejemplos de configuración de este archivo que hemos visto en teoría (puedes consultarlos en el PDF del tema 2), debes configurar el servidor con los siguientes parámetros:</li>
+<li>El rango debe ir desde la IP de la interfaz correspondiente número 3, hasta la 10. Es decir, se deben asignar las IPs desde la X.X.X.3 hasta la X.X.X.10 (X.X.X.0 es la red de la interfaz donde debe estar el DHCP).</li>
+<li>Debes enviar también la puerta de enlace a los clientes a los que asignes la IP.</li>
+<li>También debes enviar a los clientes los DNS, que serán dos: <code>1.1.1.1</code> y <code>8.8.8.8</code>.</li>
+</ol>
+<h3 id="51-instalacion-del-servidor-dhcp">5.1 Instalación del servidor DHCP<a class="headerlink" href="#51-instalacion-del-servidor-dhcp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-server
+</code></pre></div>
+<p><img alt="Instalación de isc-dhcp-server" src="imagenes/05-instalacion-dhcp-server.png" />
+<em>Captura: terminal con la instalación del paquete completada sin errores.</em></p>
+<h3 id="52-configuracion-de-la-interfaz-etcdefaultisc-dhcp-server">5.2 Configuración de la interfaz (<code>/etc/default/isc-dhcp-server</code>)<a class="headerlink" href="#52-configuracion-de-la-interfaz-etcdefaultisc-dhcp-server" title="Permanent link">&para;</a></h3>
+<p><img alt="Archivo /etc/default/isc-dhcp-server editado" src="imagenes/06-etc-default-isc-dhcp-server.png" />
+<em>Captura: editor mostrando la interfaz configurada (por ejemplo, <code>INTERFACESv4="enp0s8"</code>).</em></p>
+<h3 id="53-configuracion-del-archivo-etcdhcpdhcpdconf">5.3 Configuración del archivo <code>/etc/dhcp/dhcpd.conf</code><a class="headerlink" href="#53-configuracion-del-archivo-etcdhcpdhcpdconf" title="Permanent link">&para;</a></h3>
+<p><img alt="Archivo dhcpd.conf editado" src="imagenes/07-dhcpd-conf.png" />
+<em>Captura: editor mostrando el bloque <code>subnet</code> con el <code>range</code>, <code>option routers</code> y <code>option domain-name-servers</code> configurados.</em></p>
+<hr />
+<h2 id="6-hagamos-la-prueba">6. Hagamos la prueba<a class="headerlink" href="#6-hagamos-la-prueba" title="Permanent link">&para;</a></h2>
+<p>Último paso: comprueba que todo funciona según lo diseñado.</p>
+<ul>
+<li>Reinicia el servicio DHCP: <code>sudo systemctl restart isc-dhcp-server</code>.</li>
+<li>Desde la máquina cliente (Xubuntu), renueva o solicita la IP por DHCP y comprueba que recibe una dirección dentro del rango configurado, la puerta de enlace y los DNS indicados.</li>
+</ul>
+<p><img alt="Servicio DHCP activo en el servidor" src="imagenes/08-estado-servicio-dhcp.png" />
+<em>Captura: <code>sudo systemctl status isc-dhcp-server</code> mostrando el servicio activo (<code>active (running)</code>).</em></p>
+<p><img alt="IP asignada por DHCP en el cliente" src="imagenes/09-ip-cliente.png" />
+<em>Captura: en la máquina cliente, resultado de <code>ip a</code> (o <code>ipconfig</code>/equivalente) mostrando la IP, puerta de enlace y DNS recibidos por DHCP.</em></p>
+<hr />
+<h2 id="alguna-duda">¿Alguna duda?<a class="headerlink" href="#alguna-duda" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
