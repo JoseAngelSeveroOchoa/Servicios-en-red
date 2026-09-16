@@ -3,13 +3,27 @@ site_url: https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/
 
 theme:
   name: material
+  features:
+    - navigation.sections
   language: es
 
 nav:
   - Inicio: index.md
-  - UD01: UD01.md
+  - Unidades:
+    - UD01_DHCP: UD01_DHCP.md
+  - Prácticas:
+    - UD01_DHCP_PRACTICA1: UD01_DHCP_PRACTICA1.md
+ 
 
 markdown_extensions:
   - admonition
-  - pymdownx.details     # Opcional: permite cajas desplegables (??? note)
-  - pymdownx.superfences # Recomendado para compatibilidad
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - tables                 # necesario para las tablas Sintaxis/Ejemplo
+  - pymdownx.highlight      # resaltado de sintaxis en los bloques ```
+  - pymdownx.inlinehilite    # resaltado en código inline (`dhcpd.conf`, etc.)
+  - toc:
+      permalink: true       # opcional, añade anclas a los títulos (## 4.1 Declaraciones)
