@@ -5,6 +5,7 @@ theme:
   name: material
   features:
     - navigation.sections
+    - content.code.copy
   language: es
 
 nav:
@@ -18,12 +19,18 @@ nav:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - attr_list
   - tables                 # necesario para las tablas Sintaxis/Ejemplo
   - pymdownx.highlight      # resaltado de sintaxis en los bloques ```
   - pymdownx.inlinehilite    # resaltado en código inline (`dhcpd.conf`, etc.)
+  - pymdownx.tasklist:
+      custom_checkbox: true # checklists visuales (- [ ] ...)
   - toc:
       permalink: true       # opcional, añade anclas a los títulos (## 4.1 Declaraciones)

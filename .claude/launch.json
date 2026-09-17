@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ser-mkdocs",
+      "runtimeExecutable": "/Users/joseangel/.local/bin/mkdocs",
+      "runtimeArgs": ["serve", "-a", "127.0.0.1:8756"],
+      "port": 8756
+    }
+  ]
+}

@@ -39,16 +39,17 @@ El uso de DHCP tiene diversas ventajas que se enumeran a continuación:
 3. Si el cliente acepta, envía una solicitud al servidor para quedarse con la IP (**DHCP REQUEST**).
 4. Si el servidor comprueba que está todo correcto, acepta la petición del cliente y le confirma que puede utilizar esa IP. La concederá por un periodo de tiempo determinado (**DHCP ACK**).
 
-```
-client                          servidor
-  |------ Discovery (broadcast) ---->|
-  |<------- Offer (unicast) ---------|
-  |------ Request (broadcast) ------>|
-  |<---- Acknowledge (unicast) ------|
-```
+```mermaid
+sequenceDiagram
+    participant C as Cliente
+    participant S as Servidor DHCP
 
-![Mensajes DHCP DORA](img/DHCP_DORA.png)
-*Figura 1: Funcionamiento de mensajes DHCP Server-Client  .*
+    C->>S: DHCP DISCOVERY (broadcast)
+    S->>C: DHCP OFFER (unicast)
+    C->>S: DHCP REQUEST (broadcast)
+    S->>C: DHCP ACK (unicast)
+```
+*Figura 1: Funcionamiento de mensajes DHCP Server-Client.*
 
 ### Tipos de mensaje
 
@@ -123,89 +124,180 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 }
 ```
 
+!!! tip "Cómo leer estos ejemplos"
+    En cada bloque de código, la **línea resaltada** es la que corresponde al elemento que se está explicando. El resto del bloque es solo el contexto (dónde iría colocada dentro del archivo).
+
 ### 4.1 Declaraciones
 
-**GROUP**
+#### `GROUP`
+
 Se utiliza para aplicar una serie de parámetros y declaraciones a un conjunto de máquinas, subredes e incluso otros grupos.
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `group etiqueta{`<br>`  [parametros]`<br>`  [declaraciones]`<br>`}` |
-| **Ejemplo** | `group grupo1{`<br>`  option routers 192.168.110.1;`<br>`  option subnet-mask 255.255.255.0;`<br>`  host pc03 {`<br>`  ...`<br>`  }`<br>`}` |
+**Sintaxis:**
+```conf
+group etiqueta {
+  [parámetros]
+  [declaraciones]
+}
+```
 
-**HOST**
+**Ejemplo:**
+```conf
+group grupo1 {
+  option routers 192.168.110.1;
+  option subnet-mask 255.255.255.0;
+  host pc03 {
+    ...
+  }
+}
+```
+
+#### `HOST`
+
 Se utiliza para aplicar parámetros y declaraciones a una máquina en particular.
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `host etiqueta_equipo {`<br>`  [parametros]`<br>`  [declaraciones]`<br>`}` |
-| **Ejemplo** | `host pc02{`<br>`  option host-name "pc2.aulaSER";`<br>`  hardware ethernet 00:50:b3:c5:60:23;`<br>`  fixed-address 192.168.100.12;`<br>`}` |
+**Sintaxis:**
+```conf
+host etiqueta_equipo {
+  [parámetros]
+  [declaraciones]
+}
+```
 
-**SUBNET**
-Indica una subred, indicando la IP de la misma, junto con su máscara de red.
+**Ejemplo:**
+```conf
+host pc02 {
+  option host-name "pc2.aulaSER";
+  hardware ethernet 00:50:b3:c5:60:23;
+  fixed-address 192.168.100.12;
+}
+```
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `subnet IP_subred netmask mascara_subred{`<br>`  [parametros]`<br>`  [declaraciones]`<br>`}` |
-| **Ejemplo** | `subnet 192.168.100.0 netmask 255.255.255.0 {`<br>`  range 192.168.100.101 192.168.100.109;`<br>`  range 192.168.100.191 192.168.100.198;`<br>`}` |
+#### `SUBNET`
+
+Indica una subred, señalando la IP de la misma junto con su máscara de red.
+
+**Sintaxis:**
+```conf
+subnet IP_subred netmask mascara_subred {
+  [parámetros]
+  [declaraciones]
+}
+```
+
+**Ejemplo:**
+```conf
+subnet 192.168.100.0 netmask 255.255.255.0 {
+  range 192.168.100.101 192.168.100.109;
+  range 192.168.100.191 192.168.100.198;
+}
+```
 
 ### 4.2 Parámetros
 
-**fixed-address**
-Sólo aparece en la declaración host y se utiliza para asignar direcciones IPs fijas con reserva.
+#### `fixed-address`
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `fixed-address <dir_IP>` |
-| **Ejemplo** | `subnet 140.220.191.0 netmask 255.255.255.0 {`<br>`  host iesserver{`<br>`    hardware ethernet 08:00:2b:4c:59:23;`<br>`    fixed-address 140.220.191.1;`<br>`  }`<br>`}` |
+Solo aparece dentro de la declaración `host` y se utiliza para asignar direcciones IP fijas con reserva.
 
-**hardware**
-Se utiliza para identificar una máquina concreta. Se debe especificar la dirección física (MAC) de la interfaz de red.
+**Sintaxis:** `fixed-address <dir_IP>;`
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `hardware <tipo> direccion_hardware;`<br>En *tipo* se indica el tipo de interfaz de red: ethernet o token-ring. |
-| **Ejemplo** | `subnet 140.220.191.0 netmask 255.255.255.0 {`<br>`  host iesserver{`<br>`    hardware ethernet 08:00:2b:4c:59:23;`<br>`    fixed-address 140.220.191.1;`<br>`  }`<br>`}` |
+**Ejemplo:**
+```conf hl_lines="4"
+subnet 140.220.191.0 netmask 255.255.255.0 {
+  host iesserver {
+    hardware ethernet 08:00:2b:4c:59:23;
+    fixed-address 140.220.191.1;
+  }
+}
+```
 
-**host-name**
-Nombre para asignar al host solicitado.
+#### `hardware`
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `host-name <nombre_equipo>;` |
-| **Ejemplo** | `subnet 140.220.191.0 netmask 255.255.255.0 {`<br>`  host iesserver{`<br>`    hardware ethernet 08:00:2b:4c:59:23;`<br>`    fixed-address 140.220.191.1;`<br>`  }`<br>`}` |
+Se utiliza para identificar una máquina concreta. Se debe especificar la dirección física (MAC) de la interfaz de red. En `<tipo>` se indica el tipo de interfaz de red: `ethernet` o `token-ring`.
 
-**range**
+**Sintaxis:** `hardware <tipo> direccion_hardware;`
+
+**Ejemplo:**
+```conf hl_lines="3"
+subnet 140.220.191.0 netmask 255.255.255.0 {
+  host iesserver {
+    hardware ethernet 08:00:2b:4c:59:23;
+    fixed-address 140.220.191.1;
+  }
+}
+```
+
+#### `host-name`
+
+Nombre que se asignará al host solicitado.
+
+**Sintaxis:** `host-name <nombre_equipo>;`
+
+**Ejemplo:**
+```conf hl_lines="2"
+host pc02 {
+  option host-name "pc2.aulaSER";
+  hardware ethernet 00:50:b3:c5:60:23;
+  fixed-address 192.168.100.12;
+}
+```
+
+#### `range`
+
 Indica un rango de direcciones válidas que se asignarán a los clientes.
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `range IP_inicial IP_final;` |
-| **Ejemplo** | `subnet 140.220.191.0 netmask 255.255.255.0 {`<br>`  range 140.220.191.150 140.220.191.249;`<br>`}` |
+**Sintaxis:** `range IP_inicial IP_final;`
 
-**option routers**
+**Ejemplo:**
+```conf hl_lines="2"
+subnet 140.220.191.0 netmask 255.255.255.0 {
+  range 140.220.191.150 140.220.191.249;
+}
+```
+
+#### `option routers`
+
 Se usa para enviarle al cliente la puerta de enlace. Se puede enviar una IP o un nombre.
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `option routers <listaIPs>;` |
-| **Ejemplo** | `subnet 10.0.0.0 netmask 255.255.255.0 {`<br>`  range 10.0.0.10 10.0.0.254;`<br>`  option routers 10.0.0.1;`<br>`}` |
+**Sintaxis:** `option routers <listaIPs>;`
 
-**option subnet-mask**
-Esta opción se usa para especificar la máscara de subred que se enviará al cliente. Si se omite esta opción, se configurará la máscara que va asociada a la declaración de la subred.
+**Ejemplo:**
+```conf hl_lines="3"
+subnet 10.0.0.0 netmask 255.255.255.0 {
+  range 10.0.0.10 10.0.0.254;
+  option routers 10.0.0.1;
+}
+```
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `option subnet-mask <mascara>;` |
-| **Ejemplo** | `subnet 10.0.0.0 netmask 255.255.255.0 {`<br>`  range 10.0.0.10 10.0.0.254;`<br>`  option routers 10.0.0.1;`<br>`  option broadcast-address 10.0.0.255;`<br>`  option subnet-mask 255.255.255.0;`<br>`}` |
+#### `option subnet-mask`
 
-**option domain-name-servers**
-Se utiliza para enviar a los clientes el servidor/es DNS que utilizarán. Si se ponen distintas direcciones, se deben poner en orden de preferencia, primero el servidor primario, después el secundario, etc.
+Se usa para especificar la máscara de subred que se enviará al cliente. Si se omite esta opción, se configurará la máscara que va asociada a la declaración de la subred.
 
-| Campo | Detalle |
-|---|---|
-| **Sintaxis** | `option domain-name-servers <IPs>;` |
-| **Ejemplo** | `subnet 10.0.0.0 netmask 255.255.255.0 {`<br>`  range 10.0.0.10 10.0.0.254;`<br>`  option domain-name-servers 8.8.8.8, 8.8.4.4;`<br>`}` |
+**Sintaxis:** `option subnet-mask <mascara>;`
+
+**Ejemplo:**
+```conf hl_lines="5"
+subnet 10.0.0.0 netmask 255.255.255.0 {
+  range 10.0.0.10 10.0.0.254;
+  option routers 10.0.0.1;
+  option broadcast-address 10.0.0.255;
+  option subnet-mask 255.255.255.0;
+}
+```
+
+#### `option domain-name-servers`
+
+Se utiliza para enviar a los clientes el/los servidor/es DNS que utilizarán. Si se ponen varias direcciones, deben ir en orden de preferencia: primero el servidor primario, después el secundario, etc.
+
+**Sintaxis:** `option domain-name-servers <IPs>;`
+
+**Ejemplo:**
+```conf hl_lines="3"
+subnet 10.0.0.0 netmask 255.255.255.0 {
+  range 10.0.0.10 10.0.0.254;
+  option domain-name-servers 8.8.8.8, 8.8.4.4;
+}
+```
 
 ---
 

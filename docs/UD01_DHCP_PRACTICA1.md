@@ -1,5 +1,9 @@
 # UD01: Práctica DHCP 1
 
+!!! abstract "Objetivo de la práctica"
+    Configurar un servidor DHCP en **Ubuntu Server** (VirtualBox) que reparta dirección IP, puerta de enlace y DNS a un cliente **Xubuntu** conectado por red interna.
+
+    **Materiales:** VirtualBox · Ubuntu Server · Xubuntu · `isc-dhcp-server`
 
 ---
 
@@ -9,6 +13,17 @@ Antes de empezar, es necesario tener clara la topología: un router de casa/clas
 
 - **Máquina virtual 1 – Ubuntu Server** (SERVIDOR/Router): con dos tarjetas de red, una hacia la LAN de casa/clase (`192.168.X.X`) y otra hacia la red interna con las máquinas virtuales (`172.1.a.1`).
 - **Máquina virtual 2 – Xubuntu** (CLIENTE): conectada únicamente a la red interna (`172.1.a.2`).
+
+```mermaid
+graph LR
+    R["Router de casa/clase<br>Internet · LAN 192.168.X.X"]
+    S["Ubuntu Server — SERVIDOR<br>enp0s3 + enp0s8"]
+    C["Xubuntu — CLIENTE<br>172.1.a.2"]
+
+    R -- "enp0s3 · dhcp" --> S
+    S -- "enp0s8 · red interna<br>172.1.a.1" --> C
+```
+*Figura 1: Topología de la red virtual — router, servidor con dos tarjetas de red y cliente.*
 
 ![Esquema de la red virtual](imagenes/01-esquema-red.png)
 *Captura: diagrama o resultado de tu propia topología de red virtual.*
@@ -46,7 +61,7 @@ Identifica el nombre de cada interfaz (por ejemplo, `enp0s3` y `enp0s8`) y anota
 
 En la ruta `/etc/network` encontramos el archivo de interfaces de red y podemos configurarlo. Un ejemplo sería el siguiente:
 
-```
+```text title="/etc/network/interfaces"
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
@@ -65,7 +80,8 @@ iface enp0s8 inet static
         netmask 255.255.255.0
 ```
 
-> **Nota:** cada cambio en la red necesita reinicio: `sudo systemctl restart networking`.
+!!! tip "Recuerda"
+    Cada cambio en la red necesita reinicio: `sudo systemctl restart networking`.
 
 ![Archivo /etc/network/interfaces editado](imagenes/04-etc-network-interfaces.png)
 *Captura: editor `nano` (o el que uses) mostrando tu archivo de configuración de red ya editado.*
@@ -76,11 +92,12 @@ iface enp0s8 inet static
 
 1. Instala el servidor DHCP llamado `isc-dhcp-server` en tu servidor.
 2. Configura la interfaz en el archivo del servidor DHCP que se encuentra en `/etc/default`.
-3. Configura el archivo de configuración que se encuentra en `/etc/dhcp`.
-   - Teniendo en cuenta los ejemplos de configuración de este archivo que hemos visto en teoría (puedes consultarlos en el PDF del tema 2), debes configurar el servidor con los siguientes parámetros:
-   - El rango debe ir desde la IP de la interfaz correspondiente número 3, hasta la 10. Es decir, se deben asignar las IPs desde la X.X.X.3 hasta la X.X.X.10 (X.X.X.0 es la red de la interfaz donde debe estar el DHCP).
-   - Debes enviar también la puerta de enlace a los clientes a los que asignes la IP.
-   - También debes enviar a los clientes los DNS, que serán dos: `1.1.1.1` y `8.8.8.8`.
+3. Configura el archivo de configuración que se encuentra en `/etc/dhcp`, teniendo en cuenta los ejemplos vistos en teoría (PDF del tema 2).
+
+!!! warning "Parámetros obligatorios del `subnet`"
+    - **Rango:** desde la IP `.3` hasta la `.10` de la interfaz correspondiente. Es decir, `X.X.X.3` a `X.X.X.10` (siendo `X.X.X.0` la red de la interfaz donde está el DHCP).
+    - **Puerta de enlace:** debes enviarla a los clientes a los que asignes IP.
+    - **DNS:** debes enviar dos, `1.1.1.1` y `8.8.8.8`.
 
 ### 5.1 Instalación del servidor DHCP
 
@@ -117,6 +134,15 @@ sudo apt install isc-dhcp-server
 ![IP asignada por DHCP en el cliente](imagenes/09-ip-cliente.png)
 *Captura: en la máquina cliente, resultado de `ip a` (o `ipconfig`/equivalente) mostrando la IP, puerta de enlace y DNS recibidos por DHCP.*
 
+### Checklist de verificación
+
+- [ ] El cliente recibe una IP dentro del rango `X.X.X.3` – `X.X.X.10`.
+- [ ] La puerta de enlace recibida coincide con la IP de `enp0s8` del servidor.
+- [ ] Los DNS recibidos son `1.1.1.1` y `8.8.8.8`.
+- [ ] `systemctl status isc-dhcp-server` muestra `active (running)` sin errores.
+
 ---
 
 ## ¿Alguna duda?
+
+Si el cliente no recibe IP, revisa primero el `subnet` del paso 5: rango, `option routers` y `option domain-name-servers`.
