@@ -526,6 +526,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. Hagamos la prueba">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-de-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist de verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -684,6 +701,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. Hagamos la prueba">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-de-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist de verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -715,6 +749,11 @@
 
 
 <h1 id="ud01-practica-dhcp-1">UD01: Práctica DHCP 1<a class="headerlink" href="#ud01-practica-dhcp-1" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivo de la práctica</p>
+<p>Configurar un servidor DHCP en <strong>Ubuntu Server</strong> (VirtualBox) que reparta dirección IP, puerta de enlace y DNS a un cliente <strong>Xubuntu</strong> conectado por red interna.</p>
+<p><strong>Materiales:</strong> VirtualBox · Ubuntu Server · Xubuntu · <code>isc-dhcp-server</code></p>
+</div>
 <hr />
 <h2 id="1-piensa-la-estructura-de-red-virtual">1. Piensa la estructura de red virtual<a class="headerlink" href="#1-piensa-la-estructura-de-red-virtual" title="Permanent link">&para;</a></h2>
 <p>Antes de empezar, es necesario tener clara la topología: un router de casa/clase que da acceso a Internet y a la LAN, y dentro de tu ordenador dos máquinas virtuales conectadas entre sí:</p>
@@ -722,6 +761,14 @@
 <li><strong>Máquina virtual 1 – Ubuntu Server</strong> (SERVIDOR/Router): con dos tarjetas de red, una hacia la LAN de casa/clase (<code>192.168.X.X</code>) y otra hacia la red interna con las máquinas virtuales (<code>172.1.a.1</code>).</li>
 <li><strong>Máquina virtual 2 – Xubuntu</strong> (CLIENTE): conectada únicamente a la red interna (<code>172.1.a.2</code>).</li>
 </ul>
+<p><pre class="mermaid"><code>graph LR
+    R["Router de casa/clase&lt;br&gt;Internet · LAN 192.168.X.X"]
+    S["Ubuntu Server — SERVIDOR&lt;br&gt;enp0s3 + enp0s8"]
+    C["Xubuntu — CLIENTE&lt;br&gt;172.1.a.2"]
+
+    R -- "enp0s3 · dhcp" --&gt; S
+    S -- "enp0s8 · red interna&lt;br&gt;172.1.a.1" --&gt; C</code></pre>
+<em>Figura 1: Topología de la red virtual — router, servidor con dos tarjetas de red y cliente.</em></p>
 <p><img alt="Esquema de la red virtual" src="imagenes/01-esquema-red.png" />
 <em>Captura: diagrama o resultado de tu propia topología de red virtual.</em></p>
 <hr />
@@ -744,7 +791,7 @@
 <hr />
 <h2 id="4-configura-las-redes">4. Configura las redes<a class="headerlink" href="#4-configura-las-redes" title="Permanent link">&para;</a></h2>
 <p>En la ruta <code>/etc/network</code> encontramos el archivo de interfaces de red y podemos configurarlo. Un ejemplo sería el siguiente:</p>
-<div class="highlight"><pre><span></span><code># This file describes the network interfaces available on your system
+<div class="highlight"><span class="filename">/etc/network/interfaces</span><pre><span></span><code># This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
 source /etc/network/interfaces.d/*
@@ -761,9 +808,10 @@ iface enp0s8 inet static
         address 172.1.2.1
         netmask 255.255.255.0
 </code></pre></div>
-<blockquote>
-<p><strong>Nota:</strong> cada cambio en la red necesita reinicio: <code>sudo systemctl restart networking</code>.</p>
-</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Recuerda</p>
+<p>Cada cambio en la red necesita reinicio: <code>sudo systemctl restart networking</code>.</p>
+</div>
 <p><img alt="Archivo /etc/network/interfaces editado" src="imagenes/04-etc-network-interfaces.png" />
 <em>Captura: editor <code>nano</code> (o el que uses) mostrando tu archivo de configuración de red ya editado.</em></p>
 <hr />
@@ -771,12 +819,16 @@ iface enp0s8 inet static
 <ol>
 <li>Instala el servidor DHCP llamado <code>isc-dhcp-server</code> en tu servidor.</li>
 <li>Configura la interfaz en el archivo del servidor DHCP que se encuentra en <code>/etc/default</code>.</li>
-<li>Configura el archivo de configuración que se encuentra en <code>/etc/dhcp</code>.</li>
-<li>Teniendo en cuenta los ejemplos de configuración de este archivo que hemos visto en teoría (puedes consultarlos en el PDF del tema 2), debes configurar el servidor con los siguientes parámetros:</li>
-<li>El rango debe ir desde la IP de la interfaz correspondiente número 3, hasta la 10. Es decir, se deben asignar las IPs desde la X.X.X.3 hasta la X.X.X.10 (X.X.X.0 es la red de la interfaz donde debe estar el DHCP).</li>
-<li>Debes enviar también la puerta de enlace a los clientes a los que asignes la IP.</li>
-<li>También debes enviar a los clientes los DNS, que serán dos: <code>1.1.1.1</code> y <code>8.8.8.8</code>.</li>
+<li>Configura el archivo de configuración que se encuentra en <code>/etc/dhcp</code>, teniendo en cuenta los ejemplos vistos en teoría (PDF del tema 2).</li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Parámetros obligatorios del <code>subnet</code></p>
+<ul>
+<li><strong>Rango:</strong> desde la IP <code>.3</code> hasta la <code>.10</code> de la interfaz correspondiente. Es decir, <code>X.X.X.3</code> a <code>X.X.X.10</code> (siendo <code>X.X.X.0</code> la red de la interfaz donde está el DHCP).</li>
+<li><strong>Puerta de enlace:</strong> debes enviarla a los clientes a los que asignes IP.</li>
+<li><strong>DNS:</strong> debes enviar dos, <code>1.1.1.1</code> y <code>8.8.8.8</code>.</li>
+</ul>
+</div>
 <h3 id="51-instalacion-del-servidor-dhcp">5.1 Instalación del servidor DHCP<a class="headerlink" href="#51-instalacion-del-servidor-dhcp" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-server
@@ -800,8 +852,16 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <em>Captura: <code>sudo systemctl status isc-dhcp-server</code> mostrando el servicio activo (<code>active (running)</code>).</em></p>
 <p><img alt="IP asignada por DHCP en el cliente" src="imagenes/09-ip-cliente.png" />
 <em>Captura: en la máquina cliente, resultado de <code>ip a</code> (o <code>ipconfig</code>/equivalente) mostrando la IP, puerta de enlace y DNS recibidos por DHCP.</em></p>
+<h3 id="checklist-de-verificacion">Checklist de verificación<a class="headerlink" href="#checklist-de-verificacion" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El cliente recibe una IP dentro del rango <code>X.X.X.3</code> – <code>X.X.X.10</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> La puerta de enlace recibida coincide con la IP de <code>enp0s8</code> del servidor.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Los DNS recibidos son <code>1.1.1.1</code> y <code>8.8.8.8</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>systemctl status isc-dhcp-server</code> muestra <code>active (running)</code> sin errores.</li>
+</ul>
 <hr />
 <h2 id="alguna-duda">¿Alguna duda?<a class="headerlink" href="#alguna-duda" title="Permanent link">&para;</a></h2>
+<p>Si el cliente no recibe IP, revisa primero el <code>subnet</code> del paso 5: rango, <code>option routers</code> y <code>option domain-name-servers</code>.</p>
 
 
 
@@ -851,7 +911,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
