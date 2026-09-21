@@ -14,6 +14,8 @@ nav:
     - UD01_DHCP: UD01_DHCP.md
   - Prácticas:
     - UD01_DHCP_PRACTICA1: UD01_DHCP_PRACTICA1.md
+    - UD02_DHCP_PRACTICA1: UD02_DHCP_PRACTICA1.md
+
  
 
 markdown_extensions:
