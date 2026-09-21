@@ -546,6 +546,73 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#7-comprobando-tu-dominio-del-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Comprobando tu dominio del servicio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Comprobando tu dominio del servicio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-reduce-el-rango-de-ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Reduce el rango de IPs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-comprobacion-de-detencion-e-inicio-del-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Comprobación de detención e inicio del servicio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-ip-fija-reserva-para-un-dispositivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 IP fija (reserva) para un dispositivo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 IP fija (reserva) para un dispositivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-debes-entregar-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Qué debes entregar de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#alguna-duda" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -560,6 +627,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD02_DHCP_PRACTICA1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD02_DHCP_PRACTICA1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -721,6 +816,73 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#7-comprobando-tu-dominio-del-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Comprobando tu dominio del servicio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Comprobando tu dominio del servicio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-reduce-el-rango-de-ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Reduce el rango de IPs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-comprobacion-de-detencion-e-inicio-del-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Comprobación de detención e inicio del servicio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-ip-fija-reserva-para-un-dispositivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 IP fija (reserva) para un dispositivo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.3 IP fija (reserva) para un dispositivo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-debes-entregar-de-este-apartado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Qué debes entregar de este apartado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#alguna-duda" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -751,41 +913,50 @@
 <h1 id="ud01-practica-dhcp-1">UD01: Práctica DHCP 1<a class="headerlink" href="#ud01-practica-dhcp-1" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Objetivo de la práctica</p>
-<p>Configurar un servidor DHCP en <strong>Ubuntu Server</strong> (VirtualBox) que reparta dirección IP, puerta de enlace y DNS a un cliente <strong>Xubuntu</strong> conectado por red interna.</p>
-<p><strong>Materiales:</strong> VirtualBox · Ubuntu Server · Xubuntu · <code>isc-dhcp-server</code></p>
+<p>Configurar un servidor DHCP en <strong>Debian sin interfaz gráfica</strong> (VirtualBox) que reparta dirección IP, puerta de enlace y DNS a un cliente <strong>Debian con interfaz gráfica</strong> conectado por red interna.</p>
+<p><strong>Materiales:</strong> VirtualBox · Debian Server (sin entorno gráfico) · Debian Cliente (con entorno gráfico) · <code>isc-dhcp-server</code></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Toda la práctica se hace en local, sin tocar la red del centro</p>
+<p>La red del instituto la gestiona Consellería y tiene un número limitado de IPs. Si conectas el adaptador de una máquina virtual en modo <strong>Adaptador puente</strong>, la VM pide una IP real a esa red como si fuera un dispositivo más — y el centro se queda sin IPs disponibles.</p>
+<p>Por eso, en esta práctica el único adaptador que sale a Internet va en modo <strong>NAT</strong> (VirtualBox le asigna una IP interna propia, típicamente <code>10.0.2.x</code>, y hace de traductor de direcciones — no se pide nada a la red real). El resto de la topología es exactamente igual: una red interna entre servidor y cliente, sin salir del propio equipo.</p>
 </div>
 <hr />
 <h2 id="1-piensa-la-estructura-de-red-virtual">1. Piensa la estructura de red virtual<a class="headerlink" href="#1-piensa-la-estructura-de-red-virtual" title="Permanent link">&para;</a></h2>
-<p>Antes de empezar, es necesario tener clara la topología: un router de casa/clase que da acceso a Internet y a la LAN, y dentro de tu ordenador dos máquinas virtuales conectadas entre sí:</p>
+<p>Antes de empezar, es necesario tener clara la topología: dos máquinas virtuales en tu propio ordenador, conectadas entre sí, donde solo el servidor tiene salida a Internet (para poder instalar paquetes) sin llegar a formar parte de la red real del centro:</p>
 <ul>
-<li><strong>Máquina virtual 1 – Ubuntu Server</strong> (SERVIDOR/Router): con dos tarjetas de red, una hacia la LAN de casa/clase (<code>192.168.X.X</code>) y otra hacia la red interna con las máquinas virtuales (<code>172.1.a.1</code>).</li>
-<li><strong>Máquina virtual 2 – Xubuntu</strong> (CLIENTE): conectada únicamente a la red interna (<code>172.1.a.2</code>).</li>
+<li><strong>Máquina virtual 1 – Debian Server</strong> (SERVIDOR/Router, <strong>sin interfaz gráfica</strong>): con dos tarjetas de red, una en modo NAT (solo para salida a Internet, <code>10.0.2.x</code>) y otra hacia la red interna con la máquina cliente (<code>172.1.a.1</code>).</li>
+<li><strong>Máquina virtual 2 – Debian Cliente</strong> (CLIENTE, <strong>con interfaz gráfica</strong>): conectada únicamente a la red interna (<code>172.1.a.2</code>).</li>
 </ul>
 <p><pre class="mermaid"><code>graph LR
-    R["Router de casa/clase&lt;br&gt;Internet · LAN 192.168.X.X"]
-    S["Ubuntu Server — SERVIDOR&lt;br&gt;enp0s3 + enp0s8"]
-    C["Xubuntu — CLIENTE&lt;br&gt;172.1.a.2"]
+    N["Internet&lt;br&gt;(vía NAT, IP interna 10.0.2.x)"]
+    S["Debian Server — SERVIDOR&lt;br&gt;enp0s3 (NAT) + enp0s8 (interna)"]
+    C["Debian Cliente — CLIENTE&lt;br&gt;172.1.a.2"]
 
-    R -- "enp0s3 · dhcp" --&gt; S
+    N -. "enp0s3 · NAT, sin tocar la red real" .-&gt; S
     S -- "enp0s8 · red interna&lt;br&gt;172.1.a.1" --&gt; C</code></pre>
-<em>Figura 1: Topología de la red virtual — router, servidor con dos tarjetas de red y cliente.</em></p>
+<em>Figura 1: Topología de la red virtual — servidor con salida NAT (no bridge) y cliente por red interna, todo local.</em></p>
 <p><img alt="Esquema de la red virtual" src="imagenes/01-esquema-red.png" />
 <em>Captura: diagrama o resultado de tu propia topología de red virtual.</em></p>
 <hr />
 <h2 id="2-configura-las-tarjetas-de-red-virtuales">2. Configura las tarjetas de red virtuales<a class="headerlink" href="#2-configura-las-tarjetas-de-red-virtuales" title="Permanent link">&para;</a></h2>
-<p>En VirtualBox (o el hipervisor que uses), configura las tarjetas de red de la máquina servidor:</p>
+<p>En VirtualBox, configura las tarjetas de red de la máquina servidor:</p>
 <ul>
-<li><strong>Adaptador 1:</strong> conectado en modo <em>Adaptador puente</em>, para que salga a la LAN de casa/clase.</li>
-<li><strong>Adaptador 2:</strong> conectado en modo <em>Red interna</em> (o el modo que use tu topología), para comunicarse con la máquina cliente.</li>
+<li><strong>Adaptador 1:</strong> conectado en modo <strong>NAT</strong> (no en modo puente), únicamente para tener salida a Internet y poder instalar paquetes con <code>apt</code>.</li>
+<li><strong>Adaptador 2:</strong> conectado en modo <em>Red interna</em>, para comunicarse con la máquina cliente.</li>
 </ul>
+<div class="admonition danger">
+<p class="admonition-title">No uses Adaptador puente</p>
+<p>Si conectas el Adaptador 1 en modo <em>Adaptador puente</em>, tu máquina virtual pedirá una IP a la red real del centro (gestionada por Consellería), consumiendo un recurso limitado. Usa siempre <strong>NAT</strong> para la salida a Internet en esta práctica.</p>
+</div>
 <p><img alt="Configuración de las tarjetas de red en VirtualBox" src="imagenes/02-configuracion-adaptadores.png" />
-<em>Captura: pantalla de Configuración &gt; Red de la máquina virtual, con los dos adaptadores configurados.</em></p>
+<em>Captura: pantalla de Configuración &gt; Red de la máquina virtual, con el Adaptador 1 en NAT y el Adaptador 2 en Red interna.</em></p>
 <hr />
 <h2 id="3-identifica-las-interfaces-de-red">3. Identifica las interfaces de red<a class="headerlink" href="#3-identifica-las-interfaces-de-red" title="Permanent link">&para;</a></h2>
 <p>Desde la máquina servidor, ejecuta el siguiente comando para listar las interfaces de red disponibles:</p>
 <div class="highlight"><pre><span></span><code>ip<span class="w"> </span>a
 </code></pre></div>
-<p>Identifica el nombre de cada interfaz (por ejemplo, <code>enp0s3</code> y <code>enp0s8</code>) y anota cuál corresponde a la LAN externa y cuál a la red interna con el cliente.</p>
+<p>Identifica el nombre de cada interfaz (por ejemplo, <code>enp0s3</code> y <code>enp0s8</code>) y anota cuál corresponde a la salida NAT y cuál a la red interna con el cliente.</p>
 <p><img alt="Salida del comando ip a" src="imagenes/03-ip-a.png" />
 <em>Captura: terminal con el resultado del comando <code>ip a</code>, señalando las interfaces relevantes.</em></p>
 <hr />
@@ -800,7 +971,7 @@ source /etc/network/interfaces.d/*
 auto lo enp0s3 enp0s8
 iface lo inet loopback
 
-# The primary network interface
+# The primary network interface (salida NAT, no la red del centro)
 allow-hotplug enp0s3
 iface enp0s3 inet dhcp
 
@@ -818,7 +989,7 @@ iface enp0s8 inet static
 <h2 id="5-configura-el-servidor-dhcp">5. Configura el servidor DHCP<a class="headerlink" href="#5-configura-el-servidor-dhcp" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Instala el servidor DHCP llamado <code>isc-dhcp-server</code> en tu servidor.</li>
-<li>Configura la interfaz en el archivo del servidor DHCP que se encuentra en <code>/etc/default</code>.</li>
+<li>Configura la interfaz en el archivo del servidor DHCP que se encuentra en <code>/etc/default</code>. Debe ser la interfaz de la <strong>red interna</strong> (<code>enp0s8</code>), nunca la de salida NAT.</li>
 <li>Configura el archivo de configuración que se encuentra en <code>/etc/dhcp</code>, teniendo en cuenta los ejemplos vistos en teoría (PDF del tema 2).</li>
 </ol>
 <div class="admonition warning">
@@ -846,7 +1017,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <p>Último paso: comprueba que todo funciona según lo diseñado.</p>
 <ul>
 <li>Reinicia el servicio DHCP: <code>sudo systemctl restart isc-dhcp-server</code>.</li>
-<li>Desde la máquina cliente (Xubuntu), renueva o solicita la IP por DHCP y comprueba que recibe una dirección dentro del rango configurado, la puerta de enlace y los DNS indicados.</li>
+<li>Desde la máquina cliente (Debian con interfaz gráfica), renueva o solicita la IP por DHCP y comprueba que recibe una dirección dentro del rango configurado, la puerta de enlace y los DNS indicados.</li>
 </ul>
 <p><img alt="Servicio DHCP activo en el servidor" src="imagenes/08-estado-servicio-dhcp.png" />
 <em>Captura: <code>sudo systemctl status isc-dhcp-server</code> mostrando el servicio activo (<code>active (running)</code>).</em></p>
@@ -854,14 +1025,99 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <em>Captura: en la máquina cliente, resultado de <code>ip a</code> (o <code>ipconfig</code>/equivalente) mostrando la IP, puerta de enlace y DNS recibidos por DHCP.</em></p>
 <h3 id="checklist-de-verificacion">Checklist de verificación<a class="headerlink" href="#checklist-de-verificacion" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El Adaptador 1 del servidor está en modo <strong>NAT</strong>, no en modo puente.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El cliente recibe una IP dentro del rango <code>X.X.X.3</code> – <code>X.X.X.10</code>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> La puerta de enlace recibida coincide con la IP de <code>enp0s8</code> del servidor.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Los DNS recibidos son <code>1.1.1.1</code> y <code>8.8.8.8</code>.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>systemctl status isc-dhcp-server</code> muestra <code>active (running)</code> sin errores.</li>
 </ul>
 <hr />
+<h2 id="7-comprobando-tu-dominio-del-servicio">7. Comprobando tu dominio del servicio<a class="headerlink" href="#7-comprobando-tu-dominio-del-servicio" title="Permanent link">&para;</a></h2>
+<p>Ya tienes el servidor funcionando. En este bloque lo vas a modificar en caliente, pararlo y arrancarlo, y vas a comprobar que entiendes <strong>qué hay que reiniciar en cada caso</strong> (servidor, cliente, o ambos) y por qué.</p>
+<div class="admonition note">
+<p class="admonition-title">Antes de empezar, recuerda estos comandos</p>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>restart<span class="w"> </span>isc-dhcp-server<span class="w">   </span><span class="c1"># aplica cambios en el SERVIDOR</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>isc-dhcp-server<span class="w">    </span><span class="c1"># consulta el estado del servicio</span>
+</code></pre></div>
+<p>Para que el <strong>cliente</strong> pida una IP nueva, el comando depende de cómo gestione la red:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Si el cliente usa ifupdown (como el servidor):</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>networking
+
+<span class="c1"># Si el cliente usa NetworkManager (habitual en una Debian con entorno gráfico):</span>
+sudo<span class="w"> </span>dhclient<span class="w"> </span>-r<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>dhclient
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">El cliente con interfaz gráfica suele usar NetworkManager, no ifupdown</p>
+<p>Una instalación de Debian con entorno de escritorio suele traer <strong>NetworkManager</strong> activo por defecto, a diferencia del servidor (sin interfaz gráfica), que usa el <code>ifupdown</code> clásico (<code>/etc/network/interfaces</code>). Si <code>systemctl restart networking</code> no hace nada en el cliente, usa <code>sudo dhclient -r &amp;&amp; sudo dhclient</code> para liberar y renovar la IP manualmente, o desconecta y reconecta el adaptador desde el icono de red del escritorio.</p>
+</div>
+</div>
+<h3 id="71-reduce-el-rango-de-ips">7.1 Reduce el rango de IPs<a class="headerlink" href="#71-reduce-el-rango-de-ips" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Cambia el <code>range</code> de tu subred a un rango más pequeño y distinto del que ya usabas: <code>X.X.X.20</code> – <code>X.X.X.30</code>.</li>
+<li>Reinicia el <strong>servidor</strong> para aplicar el cambio:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>isc-dhcp-server
+</code></pre></div></li>
+<li>Desde el <strong>cliente</strong>, solicita una IP nueva (con el comando que corresponda según arriba).</li>
+<li>Comprueba el resultado:
+   <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>isc-dhcp-server
+</code></pre></div></li>
+</ol>
+<h3 id="72-comprobacion-de-detencion-e-inicio-del-servicio">7.2 Comprobación de detención e inicio del servicio<a class="headerlink" href="#72-comprobacion-de-detencion-e-inicio-del-servicio" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el <strong>cliente</strong>, solicita una IP nueva.</li>
+<li>En el <strong>servidor</strong>, comprueba que se han completado los 4 pasos del proceso DORA (Discovery → Offer → Request → Ack).</li>
+<li>Detén el servicio en el servidor:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>isc-dhcp-server
+</code></pre></div></li>
+<li>
+<p>Repite los pasos 1 y 2.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<ul>
+<li>¿Ha pasado lo mismo que antes?</li>
+<li>¿Tiene IP el cliente?</li>
+<li>¿Por qué?</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Vuelve a iniciar el servicio DHCP:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>isc-dhcp-server
+</code></pre></div></p>
+</li>
+<li>
+<p>Repite los pasos 1 y 2 de nuevo.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<p>¿Vuelve todo a la normalidad? ¿Por qué crees que se comporta así?</p>
+</div>
+</li>
+</ol>
+<h3 id="73-ip-fija-reserva-para-un-dispositivo">7.3 IP fija (reserva) para un dispositivo<a class="headerlink" href="#73-ip-fija-reserva-para-un-dispositivo" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Manteniendo el rango anterior (<code>X.X.X.20</code> – <code>X.X.X.30</code>), añade una <strong>IP fija</strong> (<code>fixed-address</code>) para el cliente, fuera de ese rango: <code>X.X.X.50</code>.</p>
+<details class="tip">
+<summary>Pista, si no recuerdas la sintaxis</summary>
+<p>Repasa la sección <strong>4.1 Declaraciones → <code>HOST</code></strong> y <strong>4.2 Parámetros → <code>fixed-address</code></strong> de la UD1. Necesitas una declaración <code>host</code> dentro de tu <code>subnet</code>, identificando el equipo por su MAC (<code>hardware ethernet</code>) y asignándole la IP fija (<code>fixed-address</code>).</p>
+</details>
+</li>
+<li>
+<p>Comprueba que funciona correctamente:</p>
+</li>
+<li>Captura la asignación en el estado del servidor (<code>systemctl status isc-dhcp-server</code>).</li>
+<li>Captura la configuración de la subred en el <code>dhcpd.conf</code>.</li>
+</ol>
+<h4 id="que-debes-entregar-de-este-apartado">✅ Qué debes entregar de este apartado<a class="headerlink" href="#que-debes-entregar-de-este-apartado" title="Permanent link">&para;</a></h4>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Captura del <code>dhcpd.conf</code> con el rango cambiado a <code>X.X.X.20</code>–<code>X.X.X.30</code>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Respuesta razonada a las preguntas de reflexión del apartado 7.2.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Captura del <code>dhcpd.conf</code> con la reserva de IP fija (<code>X.X.X.50</code>).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Captura de <code>systemctl status isc-dhcp-server</code> mostrando esa IP ya asignada al cliente.</li>
+</ul>
+<hr />
 <h2 id="alguna-duda">¿Alguna duda?<a class="headerlink" href="#alguna-duda" title="Permanent link">&para;</a></h2>
-<p>Si el cliente no recibe IP, revisa primero el <code>subnet</code> del paso 5: rango, <code>option routers</code> y <code>option domain-name-servers</code>.</p>
+<p>Si el cliente no recibe IP, revisa primero el <code>subnet</code> del paso 5: rango, <code>option routers</code> y <code>option domain-name-servers</code>. Si además el problema es de conectividad general, revisa que el Adaptador 1 esté en modo <strong>NAT</strong> y no en modo puente.</p>
 
 
 
