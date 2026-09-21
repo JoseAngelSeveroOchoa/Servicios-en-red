@@ -1,0 +1,770 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01_DHCP_PRACTICA2/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UD01: Práctica DHCP 2 - SERVICIOS EN RED</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud01-practica-dhcp-2" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="SERVICIOS EN RED" class="md-header__button md-logo" aria-label="SERVICIOS EN RED" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SERVICIOS EN RED
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD01: Práctica DHCP 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SERVICIOS EN RED" class="md-nav__button md-logo" aria-label="SERVICIOS EN RED" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SERVICIOS EN RED
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unidades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unidades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD01_DHCP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD01_DHCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prácticas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prácticas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD01_DHCP_PRACTICA1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD01_DHCP_PRACTICA1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD02_DHCP_PRACTICA1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD02_DHCP_PRACTICA1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prueba-la-configuracion-de-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Prueba la configuración de DHCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-monta-las-dos-redes-en-tu-propio-ordenador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Monta las dos redes en tu propio ordenador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-establece-rutas-para-llegar-al-servidor-de-la-otra-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Establece rutas para llegar al servidor de la otra red
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dhcp-relay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. DHCP relay
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-hagamos-la-prueba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Hagamos la prueba
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Hagamos la prueba">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-de-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist de verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alguna-duda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Alguna duda?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ud01-practica-dhcp-2">UD01: Práctica DHCP 2<a class="headerlink" href="#ud01-practica-dhcp-2" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivo de la práctica</p>
+<p>Comprobar en caliente el funcionamiento del servidor DHCP configurado en la Práctica 1, establecer rutas estáticas entre dos redes, y configurar un <strong>agente DHCP Relay</strong> para que los clientes de una red puedan recibir IP de un servidor DHCP situado en otra red.</p>
+<p><strong>Materiales:</strong> VirtualBox · Debian sin entorno gráfico ×2 (servidores) · Debian con entorno gráfico ×2 (clientes) · <code>isc-dhcp-server</code> · <code>isc-dhcp-relay</code></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Práctica completamente local, sin tocar la red del centro</p>
+<p>Como en la Práctica 1, no se usa ningún adaptador en modo puente. Esta vez, además, no hace falta trabajar por parejas: vas a montar <strong>dos redes completas dentro de tu propio ordenador</strong>, cada una con su servidor y su cliente, conectadas entre sí por una tercera red interna que simula el enlace entre ambas. Todo con redes internas de VirtualBox — ningún adaptador pide IP a la red real.</p>
+</div>
+<hr />
+<h2 id="1-prueba-la-configuracion-de-dhcp">1. Prueba la configuración de DHCP<a class="headerlink" href="#1-prueba-la-configuracion-de-dhcp" title="Permanent link">&para;</a></h2>
+<p>Antes de montar el escenario con dos redes, comprueba que el servidor de la Práctica 1 sigue respondiendo correctamente:</p>
+<ol>
+<li>En el servidor, configura <code>dhcpd.conf</code> con un rango de <code>.3</code> a <code>.10</code> y reinicia el servicio para aplicar los cambios:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>isc-dhcp-server
+</code></pre></div></li>
+<li>En el cliente, renueva la IP:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>networking
+</code></pre></div></li>
+<li>Comprueba que le ha dado una IP dentro del rango correcto. Haz una captura.</li>
+<li>Modifica el rango de IPs en el DHCP, poniendo de <code>.20</code> a <code>.30</code>.</li>
+<li>En el cliente, vuelve a renovar la IP.</li>
+<li>Comprueba que le ha dado una IP dentro del nuevo rango correcto. Haz una captura.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Los clientes con interfaz gráfica suelen usar NetworkManager, no ifupdown</p>
+<p>Igual que en la Práctica 1: si <code>systemctl restart networking</code> no renueva nada en un cliente con entorno gráfico, usa <code>sudo dhclient -r &amp;&amp; sudo dhclient</code>, o desconecta y reconecta el adaptador desde el icono de red del escritorio.</p>
+</div>
+<hr />
+<h2 id="2-monta-las-dos-redes-en-tu-propio-ordenador">2. Monta las dos redes en tu propio ordenador<a class="headerlink" href="#2-monta-las-dos-redes-en-tu-propio-ordenador" title="Permanent link">&para;</a></h2>
+<p>Vas a necesitar <strong>4 máquinas virtuales</strong> en total: dos redes completas (servidor + cliente cada una), conectadas por una red interna adicional que hace de "enlace entre redes" — sin usar nunca el modo puente.</p>
+<table>
+<thead>
+<tr>
+<th>Máquina</th>
+<th>Adaptador 1</th>
+<th>Adaptador 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servidor 1 (Debian, sin interfaz gráfica)</td>
+<td>Red interna <strong><code>red-central</code></strong> — <code>10.0.0.10</code></td>
+<td>Red interna <strong><code>red1</code></strong> — <code>172.1.1.1</code></td>
+</tr>
+<tr>
+<td>Cliente 1 (Debian, con interfaz gráfica)</td>
+<td>Red interna <strong><code>red1</code></strong> — <code>172.1.1.2</code> (por DHCP)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Servidor 2 (Debian, sin interfaz gráfica)</td>
+<td>Red interna <strong><code>red-central</code></strong> — <code>10.0.0.20</code></td>
+<td>Red interna <strong><code>red2</code></strong> — <code>172.1.6.1</code></td>
+</tr>
+<tr>
+<td>Cliente 2 (Debian, con interfaz gráfica)</td>
+<td>Red interna <strong><code>red2</code></strong> — <code>172.1.6.2</code> (por DHCP)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><pre class="mermaid"><code>graph TB
+    subgraph Red1["Red 1"]
+        S1["Servidor 1&lt;br&gt;enp0s3: 10.0.0.10&lt;br&gt;enp0s8: 172.1.1.1"]
+        C1["Cliente 1&lt;br&gt;172.1.1.2"]
+        S1 -- "enp0s8 · red1" --&gt; C1
+    end
+
+    subgraph Red2["Red 2"]
+        S2["Servidor 2&lt;br&gt;enp0s3: 10.0.0.20&lt;br&gt;enp0s8: 172.1.6.1"]
+        C2["Cliente 2&lt;br&gt;172.1.6.2"]
+        S2 -- "enp0s8 · red2" --&gt; C2
+    end
+
+    S1 -- "enp0s3 · red-central&lt;br&gt;10.0.0.0/24" --- S2</code></pre>
+<em>Figura 1: dos redes independientes dentro de tu mismo ordenador, enlazadas por una tercera red interna (<code>red-central</code>) que hace de "cable" entre ambos servidores/router.</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Tres redes internas en VirtualBox</p>
+<p>Necesitas crear tres redes internas distintas en VirtualBox (con nombres, por ejemplo, <code>red-central</code>, <code>red1</code> y <code>red2</code>) y asignar cada adaptador de cada VM a la que le corresponda según la tabla de arriba. Ninguna de las tres toca la red física del equipo ni la del centro.</p>
+</div>
+<p><img alt="Estructura de las dos redes en local" src="imagenes/01-estructura-redes-locales.png" />
+<em>Captura: las 4 máquinas virtuales y sus adaptadores configurados en VirtualBox.</em></p>
+<hr />
+<h2 id="3-establece-rutas-para-llegar-al-servidor-de-la-otra-red">3. Establece rutas para llegar al servidor de la otra red<a class="headerlink" href="#3-establece-rutas-para-llegar-al-servidor-de-la-otra-red" title="Permanent link">&para;</a></h2>
+<p>Con la tabla del apartado anterior, cada servidor conoce su propia red (<code>172.1.1.0/24</code> o <code>172.1.6.0/24</code>) pero no la del otro servidor.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona antes de configurar nada</p>
+<p>¿A qué interfaz debe mandar el Servidor 1 el paquete para llegar a la red del Servidor 2, la <code>172.1.6.0/24</code>?</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>El siguiente salto (<em>next hop</em>) es el Servidor 2, y a él solo se puede llegar por la interfaz que comparte red con él: <code>enp0s3</code> (la <code>10.0.0.0/24</code>, la <code>red-central</code>).</p>
+</details>
+</div>
+<p>Añade la ruta estática correspondiente en cada servidor para poder llegar a la red del otro:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># En el Servidor 1, para llegar a la red del Servidor 2:</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span><span class="m">172</span>.1.6.0/24<span class="w"> </span>via<span class="w"> </span><span class="m">10</span>.0.0.20<span class="w"> </span>dev<span class="w"> </span>enp0s3
+
+<span class="c1"># En el Servidor 2, para llegar a la red del Servidor 1:</span>
+sudo<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span><span class="m">172</span>.1.1.0/24<span class="w"> </span>via<span class="w"> </span><span class="m">10</span>.0.0.10<span class="w"> </span>dev<span class="w"> </span>enp0s3
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Recuerda</p>
+<p>Esta ruta añadida con <code>ip route add</code> es temporal y se pierde al reiniciar. Si quieres que persista, añádela también en <code>/etc/network/interfaces</code> con una línea <code>post-up</code> dentro de la definición de <code>enp0s3</code>.</p>
+</div>
+<p><img alt="Tabla de rutas de ambos servidores" src="imagenes/02-tabla-rutas.png" />
+<em>Captura: salida de <code>ip route</code> en cada servidor, mostrando la ruta añadida hacia la red del otro.</em></p>
+<hr />
+<h2 id="4-dhcp-relay">4. DHCP relay<a class="headerlink" href="#4-dhcp-relay" title="Permanent link">&para;</a></h2>
+<p>Ahora vas a configurar el <strong>Servidor 1</strong> para que, en lugar de responder él mismo a las peticiones DHCP de su red, las <strong>reenvíe</strong> al servidor DHCP real, que va a ser el <strong>Servidor 2</strong>.</p>
+<p>En el Servidor 1:</p>
+<ol>
+<li>Instala el paquete <code>isc-dhcp-relay</code>:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>isc-dhcp-relay
+</code></pre></div></li>
+<li>Detén el servicio <code>isc-dhcp-server</code> en esta máquina, ya que ahora no va a responder él mismo, sino a reenviar las peticiones:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>isc-dhcp-server
+</code></pre></div></li>
+<li>Durante la configuración del paquete (o editando <code>/etc/default/isc-dhcp-relay</code> después), indica:</li>
+<li><strong>IP a la que redirigir las peticiones DHCP:</strong> la IP del Servidor 2 en la <code>red-central</code>, es decir, <code>10.0.0.20</code>.</li>
+<li><strong>Interfaz(es) por las que va a recibir peticiones DHCP de los clientes:</strong> <code>enp0s8</code> (la interfaz de <code>red1</code>, donde está el Cliente 1).</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">El servidor DHCP real también necesita saber de la otra red</p>
+<p>El <strong>Servidor 2</strong> (el que sí responde de verdad) debe tener configurado en su <code>dhcpd.conf</code> (la ruta ya la vimos en la Práctica 1) <strong>tanto el rango de IP de su propia red (<code>172.1.6.0/24</code>) como el rango de IP de la red del Servidor 1 (<code>172.1.1.0/24</code>)</strong>. Es decir, el <code>dhcpd.conf</code> debe tener declaradas dos <code>subnet</code>.</p>
+<p>No olvides aplicar los cambios:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>isc-dhcp-server
+</code></pre></div></p>
+</div>
+<p><pre class="mermaid"><code>sequenceDiagram
+    participant C1 as Cliente 1 (red1)
+    participant S1 as Servidor 1 (relay)
+    participant S2 as Servidor 2 (DHCP real)
+
+    C1-&gt;&gt;S1: DHCP DISCOVERY (broadcast)
+    S1-&gt;&gt;S2: DHCP DISCOVERY (unicast, reenviado)
+    S2-&gt;&gt;S1: DHCP OFFER
+    S1-&gt;&gt;C1: DHCP OFFER (reenviado)
+    C1-&gt;&gt;S1: DHCP REQUEST (broadcast)
+    S1-&gt;&gt;S2: DHCP REQUEST (unicast, reenviado)
+    S2-&gt;&gt;S1: DHCP ACK
+    S1-&gt;&gt;C1: DHCP ACK (reenviado)</code></pre>
+<em>Figura 2: el Cliente 1 nunca habla directamente con el Servidor 2 — todo pasa por el Servidor 1 haciendo de relay.</em></p>
+<p><img alt="Configuración de isc-dhcp-relay" src="imagenes/03-configuracion-dhcp-relay.png" />
+<em>Captura: archivo de configuración del relay con la IP del Servidor 2 y la interfaz de escucha.</em></p>
+<p><img alt="dhcpd.conf con las dos subnets declaradas" src="imagenes/04-dhcpd-conf-dos-subnets.png" />
+<em>Captura: <code>dhcpd.conf</code> del Servidor 2, con la <code>subnet</code> propia y la de la red del Servidor 1.</em></p>
+<hr />
+<h2 id="5-hagamos-la-prueba">5. Hagamos la prueba<a class="headerlink" href="#5-hagamos-la-prueba" title="Permanent link">&para;</a></h2>
+<p>Último paso: comprueba que todo funciona según lo diseñado.</p>
+<ul>
+<li>Desde el <strong>Cliente 1</strong>, solicita una IP nueva y comprueba que la recibe <strong>del Servidor 2</strong>, no de un servidor local en su propia red.</li>
+<li>Verifica en el <strong>Servidor 2</strong> que la concesión (<em>lease</em>) aparece asociada a un cliente de la red <code>172.1.1.0/24</code> (la del Servidor 1), no a la suya propia.</li>
+</ul>
+<p>Haz las capturas necesarias para demostrarlo.</p>
+<h3 id="checklist-de-verificacion">Checklist de verificación<a class="headerlink" href="#checklist-de-verificacion" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El cliente recibe IP dentro del rango correcto tras el primer cambio de rango (<code>.3</code>–<code>.10</code>).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El cliente recibe IP dentro del rango correcto tras el segundo cambio de rango (<code>.20</code>–<code>.30</code>).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Las rutas estáticas entre ambas redes aparecen en <code>ip route</code> de los dos servidores.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>isc-dhcp-relay</code> está instalado y configurado en el Servidor 1, con la IP del Servidor 2 y la interfaz de escucha correcta.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El <code>dhcpd.conf</code> del Servidor 2 tiene declaradas las dos <code>subnet</code> (la suya y la del Servidor 1).</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El Cliente 1 recibe IP correctamente del Servidor 2 a través del relay.</li>
+</ul>
+<hr />
+<h2 id="alguna-duda">¿Alguna duda?<a class="headerlink" href="#alguna-duda" title="Permanent link">&para;</a></h2>
+<p>Si el relay no reenvía las peticiones, revisa primero que el servicio <code>isc-dhcp-server</code> esté <strong>detenido</strong> en el Servidor 1 (no pueden convivir relay y servidor en el mismo host a la vez), que la interfaz indicada en <code>isc-dhcp-relay</code> sea <code>enp0s8</code>, y que la ruta hacia <code>10.0.0.20</code> exista en el Servidor 1.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
