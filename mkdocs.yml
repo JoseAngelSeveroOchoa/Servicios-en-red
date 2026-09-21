@@ -12,10 +12,12 @@ nav:
   - Inicio: index.md
   - Unidades:
     - UD01_DHCP: UD01_DHCP.md
+    - UD02_DNS: UD02_DNS.md
   - Prácticas:
     - UD01_DHCP_PRACTICA1: UD01_DHCP_PRACTICA1.md
     - UD01_DHCP_PRACTICA2: UD01_DHCP_PRACTICA2.md
-
+    - UD02_DNS_PRACTICA1: UD02_DNS_PRACTICA1.md
+    - UD02_DNS_PRACTICA2: UD02_DNS_PRACTICA2.md
  
 
 markdown_extensions:
