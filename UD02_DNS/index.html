@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD02_DNS/">
       
       
-        <link rel="prev" href="../UD01_DHCP/">
+        <link rel="prev" href="../UD01_DHCP/UD01_DHCP_PRACTICA2/">
       
       
-        <link rel="next" href="../UD01_DHCP_PRACTICA1/">
+        <link rel="next" href="UD02_DNS_PRACTICA1/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>UD02_DNS - SERVICIOS EN RED</title>
+        <title>UNIDAD 2: SERVICIO DNS - SERVICIOS EN RED</title>
       
     
     
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UD02_DNS
+              UNIDAD 2: SERVICIO DNS
             
           </span>
         </div>
@@ -222,35 +222,46 @@
       
   
   
-    
   
   
-  
-    
-    
     
     
       
-        
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../UD01_DHCP/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
     
   
-    Unidades
+    UD01 · DHCP
   
 
     
@@ -258,19 +269,27 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Unidades
+    UD01 · DHCP
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -279,14 +298,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../UD01_DHCP/" class="md-nav__link">
+      <a href="../UD01_DHCP/UD01_DHCP_PRACTICA1/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    UD01_DHCP
+    Práctica 1
   
 
     
@@ -304,44 +323,17 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UD02_DNS
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../UD01_DHCP/UD01_DHCP_PRACTICA2/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    UD02_DNS
+    Práctica 2
   
 
     
@@ -350,426 +342,142 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+    </li>
   
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-introduccion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Introducción
-      
-    </span>
-  </a>
   
-</li>
+    
+    
       
-        <li class="md-nav__item">
-  <a href="#2-antes-de-que-existiera-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Antes de que existiera DNS
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Antes de que existiera DNS">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#comprobar-que-servidores-dns-tiene-configurado-un-equipo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comprobar qué servidores DNS tiene configurado un equipo
-      
-    </span>
-  </a>
-  
-</li>
+          
         
-      </ul>
-    </nav>
-  
-</li>
       
-        <li class="md-nav__item">
-  <a href="#3-espacio-de-nombres-de-dominio" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Espacio de nombres de dominio
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Espacio de nombres de dominio">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#31-dominio-raiz" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        3.1 Dominio raíz
-      
-    </span>
-  </a>
-  
-</li>
         
-          <li class="md-nav__item">
-  <a href="#32-dominios-de-primer-nivel-tld" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        3.2 Dominios de primer nivel (TLD)
+    
+    
+    
       
-    </span>
-  </a>
-  
-</li>
         
-          <li class="md-nav__item">
-  <a href="#33-dominios-y-subdominios" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 Dominios y subdominios
-      
-    </span>
-  </a>
-  
-</li>
         
-          <li class="md-nav__item">
-  <a href="#34-delegacion-de-dominios" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        3.4 Delegación de dominios
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-    </span>
-  </a>
-  
-</li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-zonas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Zonas
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Zonas">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#ubicacion-de-las-zonas-en-debian-bind9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ubicación de las zonas en Debian (bind9)
-      
-    </span>
-  </a>
-  
-</li>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
-      </ul>
-    </nav>
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-registros-de-recursos-rr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Registros de recursos (RR)
-      
-    </span>
-  </a>
   
-    <nav class="md-nav" aria-label="5. Registros de recursos (RR)">
-      <ul class="md-nav__list">
+  <span class="md-ellipsis">
+    
+  
+    UD02 · DNS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-          <li class="md-nav__item">
-  <a href="#51-tipos-de-rr" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1 Tipos de RR
-      
-    </span>
-  </a>
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
   
-    <nav class="md-nav" aria-label="5.1 Tipos de RR">
-      <ul class="md-nav__list">
+    UD02 · DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="UD02_DNS_PRACTICA1/" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#registro-soa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registro SOA
-      
-    </span>
-  </a>
   
-</li>
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="UD02_DNS_PRACTICA2/" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#registro-ns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registro NS
-      
-    </span>
-  </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registros-a-aaaa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registros A / AAAA
-      
-    </span>
-  </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registro-cname" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registro CNAME
-      
-    </span>
-  </a>
+  <span class="md-ellipsis">
+    
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registro-mx" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registro MX
-      
-    </span>
-  </a>
+    Práctica 2
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registro-ptr-resolucion-inversa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registro PTR (resolución inversa)
-      
-    </span>
-  </a>
+
+    
+  </span>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registro-txt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registro TXT
-      
-    </span>
-  </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-tipos-de-servidor-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Tipos de servidor DNS
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Tipos de servidor DNS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuraciones-tipicas-en-una-red" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuraciones típicas en una red
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-proceso-de-resolucion-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Proceso de resolución DNS
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Proceso de resolución DNS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-consultas-recursivas-vs-iterativas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.1 Consultas recursivas vs. iterativas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-ejemplo-completo-resolucion-de-wwwyahoocom" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.2 Ejemplo completo: resolución de www.yahoo.com.
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#73-roles-en-la-cadena-de-resolucion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.3 Roles en la cadena de resolución
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-resolucion-inversa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Resolución inversa
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-responsabilidad-sobre-el-sistema-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Responsabilidad sobre el sistema DNS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-herramientas-de-diagnostico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Herramientas de diagnóstico
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. Herramientas de diagnóstico">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nslookup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        nslookup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dig" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        dig
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-configuracion-basica-de-un-servidor-dns-en-debian-bind9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Configuración básica de un servidor DNS en Debian (bind9)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#alguna-duda" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ¿Alguna duda?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+      </a>
     </li>
   
 
@@ -790,6 +498,22 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
     
     
       
@@ -802,17 +526,20 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../UD03_WEBSERVER/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
     
   
-    Prácticas
+    UD03 · Servidor Web
   
 
     
@@ -820,35 +547,43 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prácticas
+    UD03 · Servidor Web
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
+            
+              
                 
   
   
   
   
     <li class="md-nav__item">
-      <a href="../UD01_DHCP_PRACTICA1/" class="md-nav__link">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA1_Apache/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    UD01_DHCP_PRACTICA1
+    Práctica 1 · Apache
   
 
     
@@ -869,14 +604,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../UD01_DHCP_PRACTICA2/" class="md-nav__link">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA2_VirtualHost_DNS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    UD01_DHCP_PRACTICA2
+    Práctica 2 · Virtual Host + DNS
   
 
     
@@ -897,14 +632,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../UD02_DNS_PRACTICA1/" class="md-nav__link">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA3_Autenticacion/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    UD02_DNS_PRACTICA1
+    Práctica 3 · Autenticación
   
 
     
@@ -925,14 +660,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../UD02_DNS_PRACTICA2/" class="md-nav__link">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA4_SSL/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    UD02_DNS_PRACTICA2
+    Práctica 4 · SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA5_Proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 5 · Proxy
   
 
     
@@ -2056,7 +1819,7 @@ Apuntar la consulta contra <code>127.0.0.1</code> (o la IP de tu propio servidor
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.indexes", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
