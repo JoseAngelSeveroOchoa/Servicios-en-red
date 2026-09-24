@@ -1,0 +1,1652 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD02_DNS/UD02_DNS_PRACTICA2/">
+      
+      
+        <link rel="prev" href="../UD02_DNS_PRACTICA1/">
+      
+      
+        <link rel="next" href="../../UD03_WEBSERVER/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Práctica 2 - SERVICIOS EN RED</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud02-practica-dns-2" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="SERVICIOS EN RED" class="md-header__button md-logo" aria-label="SERVICIOS EN RED" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SERVICIOS EN RED
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SERVICIOS EN RED" class="md-nav__button md-logo" aria-label="SERVICIOS EN RED" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SERVICIOS EN RED
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../UD01_DHCP/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD01 · DHCP
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD01 · DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD01_DHCP/UD01_DHCP_PRACTICA1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD01_DHCP/UD01_DHCP_PRACTICA2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD02 · DNS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD02 · DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD02_DNS_PRACTICA1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracion-del-clon-como-servidor-esclavo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuración del clon como servidor esclavo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-si-algo-no-cuadra-vacia-las-caches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Si algo no cuadra: vacía las cachés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-anadir-el-dominio-automaticamente-por-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Añadir el dominio automáticamente por DHCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tarea-1-resolucion-de-dominios-de-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tarea 1: resolución de dominios de Internet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tarea-2-recursion-y-forwarders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Tarea 2: recursión y forwarders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-registro-de-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Registro de logs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Registro de logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-incluir-el-archivo-de-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Incluir el archivo de logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-crear-namedconflogging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Crear named.conf.logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-crear-el-directorio-y-los-archivos-de-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Crear el directorio y los archivos de log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-activar-el-registro-de-consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Activar el registro de consultas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-tarea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Tarea
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-configuracion-del-servidor-esclavo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Configuración del servidor esclavo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Configuración del servidor esclavo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-namedconfoptions-del-esclavo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 named.conf.options del esclavo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-namedconflocal-del-esclavo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 named.conf.local del esclavo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-autorizar-la-transferencia-en-el-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Autorizar la transferencia en el maestro
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-comprobacion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Comprobación final
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Comprobación final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-verifica-la-transferencia-de-zona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Verifica la transferencia de zona
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-comprueba-que-el-esclavo-resuelve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Comprueba que el esclavo resuelve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-comprueba-la-tolerancia-a-fallos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Comprueba la tolerancia a fallos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-de-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist de verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alguna-duda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Alguna duda?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../UD03_WEBSERVER/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD03 · Servidor Web
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD03 · Servidor Web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD03_WEBSERVER/UD03_PRACTICA1_Apache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1 · Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD03_WEBSERVER/UD03_PRACTICA2_VirtualHost_DNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2 · Virtual Host + DNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD03_WEBSERVER/UD03_PRACTICA3_Autenticacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3 · Autenticación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD03_WEBSERVER/UD03_PRACTICA4_SSL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4 · SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../UD03_WEBSERVER/UD03_PRACTICA5_Proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 5 · Proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracion-del-clon-como-servidor-esclavo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuración del clon como servidor esclavo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-si-algo-no-cuadra-vacia-las-caches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Si algo no cuadra: vacía las cachés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-anadir-el-dominio-automaticamente-por-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Añadir el dominio automáticamente por DHCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tarea-1-resolucion-de-dominios-de-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tarea 1: resolución de dominios de Internet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tarea-2-recursion-y-forwarders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Tarea 2: recursión y forwarders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-registro-de-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Registro de logs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Registro de logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-incluir-el-archivo-de-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Incluir el archivo de logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-crear-namedconflogging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Crear named.conf.logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-crear-el-directorio-y-los-archivos-de-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Crear el directorio y los archivos de log
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-activar-el-registro-de-consultas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Activar el registro de consultas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-tarea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Tarea
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-configuracion-del-servidor-esclavo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Configuración del servidor esclavo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Configuración del servidor esclavo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-namedconfoptions-del-esclavo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 named.conf.options del esclavo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-namedconflocal-del-esclavo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 named.conf.local del esclavo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-autorizar-la-transferencia-en-el-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Autorizar la transferencia en el maestro
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-comprobacion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Comprobación final
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Comprobación final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-verifica-la-transferencia-de-zona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Verifica la transferencia de zona
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-comprueba-que-el-esclavo-resuelve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Comprueba que el esclavo resuelve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-comprueba-la-tolerancia-a-fallos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Comprueba la tolerancia a fallos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checklist-de-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist de verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alguna-duda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Alguna duda?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ud02-practica-dns-2">UD02: Práctica DNS 2<a class="headerlink" href="#ud02-practica-dns-2" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Objetivo de la práctica</p>
+<p>Configurar reenviadores (<em>forwarders</em>) hacia DNS públicos, entender la diferencia entre recursión propia y reenvío, añadir registro de logs a Bind, y desplegar un <strong>servidor DNS esclavo</strong> que replique la zona <code>sre.es</code> mediante transferencia de zona.</p>
+<p><strong>Materiales:</strong> el servidor DNS (<code>dnsserver</code>) de la Práctica 1 · un segundo Debian sin interfaz gráfica, clonado, para hacer de esclavo</p>
+</div>
+<hr />
+<h2 id="1-antes-de-empezar">1. Antes de empezar<a class="headerlink" href="#1-antes-de-empezar" title="Permanent link">&para;</a></h2>
+<p>Necesitas un <strong>clon</strong> del servidor DNS para que haga de servidor esclavo.</p>
+<ul>
+<li>Ese clon tendrá una interfaz en tu misma red interna <code>172.1.a.0/24</code>, configurada para recibir la IP por DHCP (no por IP estática).</li>
+<li>El servidor DHCP (que ya tienes configurado desde UD01) debe asignarle una <strong>IP fija</strong> (reserva) a este nuevo servidor esclavo, para que su dirección no cambie nunca. Repasa la UD01, apartado 7.3, si no recuerdas cómo hacer una reserva DHCP.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Si el clon conserva más de un adaptador de red</p>
+<p>Si clonaste una máquina que tenía más de un adaptador (por ejemplo, la del ejercicio de DHCP relay de UD01), desconecta o elimina en VirtualBox el que no vayas a usar aquí. El esclavo solo necesita el adaptador NAT (para instalar paquetes) y el de la red interna <code>172.1.a.0/24</code>.</p>
+</div>
+<hr />
+<h2 id="2-configuracion-del-clon-como-servidor-esclavo">2. Configuración del clon como servidor esclavo<a class="headerlink" href="#2-configuracion-del-clon-como-servidor-esclavo" title="Permanent link">&para;</a></h2>
+<p>Si ya tenías clonada la máquina de prácticas anteriores, puedes reutilizarla, pero recuerda:</p>
+<ol>
+<li><strong>Detén los servicios que pudiera tener instalados</strong> de las prácticas de DHCP, para que no entren en conflicto:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>isc-dhcp-server
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>isc-dhcp-relay
+</code></pre></div></li>
+<li>La interfaz de la red interna debe estar configurada para recibir la IP por DHCP (usamos <code>/etc/network/interfaces</code>, no <em>netplan</em>):
+   <div class="highlight"><span class="filename">/etc/network/interfaces (fragmento)</span><pre><span></span><code>allow-hotplug enp0s8
+iface enp0s8 inet dhcp
+</code></pre></div></li>
+<li>Instala Bind y los paquetes adicionales, igual que hiciste en el servidor original (Práctica 1):
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>bind9<span class="w"> </span>bind9-utils<span class="w"> </span>bind9-doc
+</code></pre></div></li>
+</ol>
+<hr />
+<h2 id="3-si-algo-no-cuadra-vacia-las-caches">3. Si algo no cuadra: vacía las cachés<a class="headerlink" href="#3-si-algo-no-cuadra-vacia-las-caches" title="Permanent link">&para;</a></h2>
+<p>Si después de configurar todo no obtienes los resultados esperados, puede que haya quedado información en la caché del cliente o del servidor. Para vaciarla:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># En el cliente</span>
+sudo<span class="w"> </span>resolvectl<span class="w"> </span>flush-caches
+
+<span class="c1"># En el servidor</span>
+sudo<span class="w"> </span>rndc<span class="w"> </span>flush
+sudo<span class="w"> </span>rndc<span class="w"> </span>reload
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><code>resolvectl</code> en vez de <code>systemd-resolve</code></p>
+<p><code>systemd-resolve --flush-caches</code> sigue funcionando como alias en muchas distribuciones, pero está obsoleto. El comando actual es <code>resolvectl flush-caches</code>.</p>
+</div>
+<hr />
+<h2 id="4-anadir-el-dominio-automaticamente-por-dhcp">4. Añadir el dominio automáticamente por DHCP<a class="headerlink" href="#4-anadir-el-dominio-automaticamente-por-dhcp" title="Permanent link">&para;</a></h2>
+<p>Con la configuración de la Práctica 1, para hacer <em>ping</em> hay que incluir el dominio completo:</p>
+<ul>
+<li>✅ Funciona: <code>ping dnsserver.sre.es</code></li>
+<li>❌ No funciona: <code>ping dnsserver</code></li>
+</ul>
+<p>Podemos arreglarlo enviando nuestro dominio a los clientes por DHCP, para que lo añadan automáticamente a los nombres que no lo incluyan. En la declaración de tu <code>subnet</code>, dentro del <code>dhcpd.conf</code> (UD01), añade:</p>
+<div class="highlight"><pre><span></span><code><span class="hll">option domain-name "sre.es";
+</span></code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Ojo con el nombre exacto de la directiva</p>
+<p>La directiva de ISC DHCP se llama <code>domain-name</code>, <strong>no</strong> <code>domain</code>. <code>option domain "sre.es";</code> no es una directiva válida y no tendrá ningún efecto.</p>
+</div>
+<p>Reinicia el servidor DHCP y renueva la IP en el cliente para que reciba el nuevo parámetro (repasa UD01 si no recuerdas los comandos).</p>
+<hr />
+<h2 id="5-tarea-1-resolucion-de-dominios-de-internet">5. Tarea 1: resolución de dominios de Internet<a class="headerlink" href="#5-tarea-1-resolucion-de-dominios-de-internet" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Haz una nueva consulta con <code>dig</code> y comprueba que ahora sí se ha usado el servidor que toca, es decir, tu <code>dnsserver</code>. Adjunta capturas de la configuración y del resultado.
+   <div class="highlight"><pre><span></span><code>dig<span class="w"> </span>dnsserver.sre.es
+</code></pre></div></li>
+<li>
+<p>Comprueba que, si consultas un dominio de Internet (<code>cisco.com</code>, <code>github.com</code>…), se resuelve perfectamente:
+   <div class="highlight"><pre><span></span><code>dig<span class="w"> </span>cisco.com
+</code></pre></div></p>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<p>¿Cómo es posible que se resuelva si solo hemos configurado las zonas autoritativas de <code>sre.es</code>, y ninguna más?</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Repasa la UD02, apartado 7: tu Bind actúa como servidor DNS <strong>caché</strong>, con <code>recursion yes</code>. Aunque no tenga autoridad sobre <code>cisco.com</code>, puede hacer consultas iterativas empezando por los servidores raíz para resolverlo él mismo.</p>
+</details>
+</div>
+</li>
+<li>
+<p>Descomenta la sección de <code>forwarders</code> en <code>named.conf.options</code> y añade estas direcciones:
+   <div class="highlight"><pre><span></span><code>forwarders {
+<span class="hll">    208.67.222.222; // Servidor DNS de OpenDNS
+</span><span class="hll">    1.1.1.1;        // Servidor DNS de Cloudflare
+</span>};
+</code></pre></div>
+   Cambia también la opción <code>dnssec-validation</code> a <code>no</code>:
+   <div class="highlight"><pre><span></span><code>dnssec-validation no;
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Esto es solo para la práctica</p>
+<p>Desactivar la validación DNSSEC reduce la seguridad de las resoluciones (no se verifica la autenticidad de las respuestas). Lo hacemos aquí para simplificar el ejercicio, pero <strong>no es una práctica recomendable en un servidor real</strong>.</p>
+</div>
+</li>
+<li>
+<p>Vuelve a hacer un <code>dig</code> a una dirección de Internet.</p>
+<div class="admonition question">
+<p class="admonition-title">Reflexiona</p>
+<p>¿Qué crees que hemos conseguido al añadir estas direcciones de reenvío?</p>
+</div>
+</li>
+</ol>
+<hr />
+<h2 id="6-tarea-2-recursion-y-forwarders">6. Tarea 2: recursión y forwarders<a class="headerlink" href="#6-tarea-2-recursion-y-forwarders" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>En <code>named.conf.options</code>, cambia la línea <code>recursion yes;</code> por <code>recursion no;</code> y reinicia Bind.
+    a. ¿Sigue funcionando la resolución de subdominios externos de Internet? Compruébalo con <code>dig</code> o <code>nslookup</code>.
+    b. ¿Y la de tus propios equipos? Compruébalo con <code>dig</code> y el nombre de dominio completo (<code>dnsserver.sre.es</code>, <code>clidebian.sre.es</code>).
+    c. ¿Por qué pasa esto, si tenemos los <em>forwarders</em> configurados?</p>
+<details class="tip">
+<summary>Pista</summary>
+<p>Reenviar una consulta a un <em>forwarder</em> es, en sí mismo, un tipo de resolución recursiva: tu servidor le pide a otro que resuelva por él. Si <code>recursion no;</code>, tu Bind deja de intentar resolver nada que no sea autoritativo — ni siquiera reenviándolo.</p>
+</details>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">No olvides volver a dejar recursion yes;</p>
+<p>Antes de continuar con el resto de la práctica, vuelve a poner <code>recursion yes;</code>, o el resto de comprobaciones no funcionarán como se espera.</p>
+</div>
+<hr />
+<h2 id="7-registro-de-logs">7. Registro de logs<a class="headerlink" href="#7-registro-de-logs" title="Permanent link">&para;</a></h2>
+<p>Históricamente, todos los servicios de Linux han tenido archivos de log que registran su actividad. Hoy en día <code>systemd</code> centraliza esto (<code>sudo journalctl -u nombre_del_servicio</code>), pero vamos a configurar también nuestros propios archivos de log, más accesibles.</p>
+<h3 id="71-incluir-el-archivo-de-logging">7.1 Incluir el archivo de logging<a class="headerlink" href="#71-incluir-el-archivo-de-logging" title="Permanent link">&para;</a></h3>
+<p>En <code>/etc/bind/named.conf</code>, indica que se debe tener en cuenta un nuevo archivo de configuración para el logging:</p>
+<div class="highlight"><span class="filename">/etc/bind/named.conf (añadido)</span><pre><span></span><code>include "/etc/bind/named.conf.logging";
+</code></pre></div>
+<h3 id="72-crear-namedconflogging">7.2 Crear <code>named.conf.logging</code><a class="headerlink" href="#72-crear-namedconflogging" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">/etc/bind/named.conf.logging</span><pre><span></span><code>logging {
+    channel errors_syslog {
+        syslog daemon;
+        severity warning;
+    };
+<span class="hll">    // Para loggear todas las consultas DNS al servidor
+</span>    channel queries_log {
+        file "/var/log/named/queries.log" versions 600 size 20m;
+        print-time yes;
+        print-category yes;
+        print-severity yes;
+        severity dynamic;
+<span class="hll">    };
+</span>    // Para loggear todos los errores al realizar consultas al servidor
+    channel query-errors_log {
+        file "/var/log/named/query-errors.log" versions 5 size 20m;
+        print-time yes;
+        print-category yes;
+        print-severity yes;
+        severity dynamic;
+    };
+    // Definimos las categorías asociadas a los canales
+    category lame-servers { null; };
+    category edns-disabled { null; };
+    category resolver { null; };
+    category dnssec { errors_syslog; };
+    category default { errors_syslog; default_debug; };
+    category unmatched { null; };
+    category queries { queries_log; };
+    category query-errors { query-errors_log; };
+};
+</code></pre></div>
+<p>Las líneas resaltadas son los archivos donde se volcará toda la información de las consultas y de los errores.</p>
+<h3 id="73-crear-el-directorio-y-los-archivos-de-log">7.3 Crear el directorio y los archivos de log<a class="headerlink" href="#73-crear-el-directorio-y-los-archivos-de-log" title="Permanent link">&para;</a></h3>
+<p>Comprueba que el directorio y los archivos indicados <strong>no existen todavía</strong>, y créalos:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/named
+sudo<span class="w"> </span>touch<span class="w"> </span>/var/log/named/queries.log
+sudo<span class="w"> </span>touch<span class="w"> </span>/var/log/named/query-errors.log
+</code></pre></div>
+<p>Cambia la propiedad de ambos archivos al usuario <code>bind</code>, que es con el que corre el servidor DNS:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chown<span class="w"> </span>bind:bind<span class="w"> </span>/var/log/named/queries.log
+sudo<span class="w"> </span>chown<span class="w"> </span>bind:bind<span class="w"> </span>/var/log/named/query-errors.log
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title"><code>bind:bind</code> en vez de <code>bind.bind</code></p>
+<p>Ambas notaciones (<code>usuario.grupo</code> y <code>usuario:grupo</code>) funcionan en <code>chown</code>, pero <code>:</code> es la forma moderna recomendada.</p>
+</div>
+<h3 id="74-activar-el-registro-de-consultas">7.4 Activar el registro de consultas<a class="headerlink" href="#74-activar-el-registro-de-consultas" title="Permanent link">&para;</a></h3>
+<p>Finalmente, en <code>named.conf.options</code>, dentro de <code>options {...}</code>, añade:</p>
+<div class="highlight"><pre><span></span><code>querylog yes;
+</code></pre></div>
+<p>Y reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>named
+</code></pre></div>
+<h3 id="75-tarea">7.5 Tarea<a class="headerlink" href="#75-tarea" title="Permanent link">&para;</a></h3>
+<p>Realiza algunas consultas desde el cliente y comprueba que quedan registradas:</p>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/named/queries.log
+</code></pre></div>
+<p>Haz una captura de pantalla que lo demuestre.</p>
+<hr />
+<h2 id="8-configuracion-del-servidor-esclavo">8. Configuración del servidor esclavo<a class="headerlink" href="#8-configuracion-del-servidor-esclavo" title="Permanent link">&para;</a></h2>
+<p>Para configurar el servidor esclavo, partimos del clon que preparamos al principio, con Bind ya instalado igual que en el maestro.</p>
+<p>Este servidor esclavo será capaz de resolver las mismas consultas que el principal, e incluso seguirá resolviendo si el principal deja de funcionar.</p>
+<h3 id="81-namedconfoptions-del-esclavo">8.1 <code>named.conf.options</code> del esclavo<a class="headerlink" href="#81-namedconfoptions-del-esclavo" title="Permanent link">&para;</a></h3>
+<p>Configura <code>named.conf.options</code> <strong>exactamente igual</strong> que en el maestro (misma ACL, mismas opciones).</p>
+<h3 id="82-namedconflocal-del-esclavo">8.2 <code>named.conf.local</code> del esclavo<a class="headerlink" href="#82-namedconflocal-del-esclavo" title="Permanent link">&para;</a></h3>
+<p>Para indicarle al esclavo qué zonas va a recibir, declaramos las mismas que en el maestro, pero en modo esclavo (<code>type slave</code>), indicando de qué IP las va a recibir (<code>masters</code>):</p>
+<div class="highlight"><span class="filename">/etc/bind/named.conf.local (esclavo)</span><pre><span></span><code>zone "sre.es" {
+    type slave;
+    file "/etc/bind/esclavos/db.sre.es";
+    masters { 172.1.a.1; };
+};
+
+zone "a.1.172.in-addr.arpa" {
+    type slave;
+    file "/etc/bind/esclavos/db.a.1.172";
+    masters { 172.1.a.1; };
+};
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">El directorio <code>esclavos</code> debe existir</p>
+<p>Las zonas transferidas se guardarán en <code>/etc/bind/esclavos/</code>, así que crea ese directorio antes de reiniciar Bind:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>/etc/bind/esclavos
+sudo<span class="w"> </span>chown<span class="w"> </span>bind:bind<span class="w"> </span>/etc/bind/esclavos
+</code></pre></div>
+Si te da un error de permisos con esa ruta, usa en su lugar <code>/var/cache/bind/&lt;nombre_de_zona&gt;</code>, que ya pertenece al usuario <code>bind</code> por defecto.</p>
+</div>
+<h3 id="83-autorizar-la-transferencia-en-el-maestro">8.3 Autorizar la transferencia en el maestro<a class="headerlink" href="#83-autorizar-la-transferencia-en-el-maestro" title="Permanent link">&para;</a></h3>
+<p>En el servidor DNS <strong>maestro</strong>, hay que indicar a qué esclavo/s se le van a transferir las zonas. Se usan estas líneas:</p>
+<div class="highlight"><pre><span></span><code>allow-transfer { 172.1.a.X; };
+also-notify { 172.1.a.X; };
+</code></pre></div>
+<p>Sustituye <code>172.1.a.X</code> por la IP real de tu servidor esclavo (la reserva fija que le diste por DHCP).</p>
+<div class="admonition tip">
+<p class="admonition-title">Dos formas de aplicarlo</p>
+<ul>
+<li><strong>De forma genérica</strong>, para todas las zonas del servidor: dentro de <code>named.conf.options</code>.</li>
+<li><strong>Zona a zona</strong>, con más control: dentro de cada bloque <code>zone {...}</code> en <code>named.conf.local</code>.</li>
+</ul>
+</div>
+<p>Reinicia Bind tanto en el maestro como en el esclavo:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>named
+</code></pre></div>
+<hr />
+<h2 id="9-comprobacion-final">9. Comprobación final<a class="headerlink" href="#9-comprobacion-final" title="Permanent link">&para;</a></h2>
+<h3 id="91-verifica-la-transferencia-de-zona">9.1 Verifica la transferencia de zona<a class="headerlink" href="#91-verifica-la-transferencia-de-zona" title="Permanent link">&para;</a></h3>
+<p>Monitoriza el servicio del esclavo mientras se produce la transferencia:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>named<span class="w"> </span>-f
+</code></pre></div>
+<p>Deberías ver una línea indicando que la zona se ha transferido correctamente.</p>
+<h3 id="92-comprueba-que-el-esclavo-resuelve">9.2 Comprueba que el esclavo resuelve<a class="headerlink" href="#92-comprueba-que-el-esclavo-resuelve" title="Permanent link">&para;</a></h3>
+<p>Comprueba que el servidor esclavo resuelve correctamente los nombres de <code>dnsserver</code> y <code>clidebian</code>, así como los de Internet:</p>
+<div class="highlight"><pre><span></span><code>dig<span class="w"> </span>dnsserver.sre.es<span class="w"> </span>@172.1.a.X<span class="w">      </span><span class="c1"># X = IP del servidor esclavo</span>
+nslookup<span class="w"> </span>dnsserver.sre.es<span class="w"> </span><span class="m">172</span>.1.a.X
+</code></pre></div>
+<p>Indica en la captura de pantalla en qué se ve que es el <strong>esclavo</strong> (y no el maestro) quien está respondiendo.</p>
+<h3 id="93-comprueba-la-tolerancia-a-fallos">9.3 Comprueba la tolerancia a fallos<a class="headerlink" href="#93-comprueba-la-tolerancia-a-fallos" title="Permanent link">&para;</a></h3>
+<p>Con todo funcionando, apaga el servicio <code>named</code> del servidor <strong>principal/maestro</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># En el maestro</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>named
+</code></pre></div>
+<p>El servidor esclavo debería seguir respondiendo a las consultas DNS sin problema.</p>
+<ul>
+<li>Adjunta capturas de los comandos usados para consultar al esclavo, señalando que es él quien responde.</li>
+<li>Adjunta una captura de los logs del esclavo, mostrando que está recibiendo las consultas.</li>
+</ul>
+<h3 id="checklist-de-verificacion">Checklist de verificación<a class="headerlink" href="#checklist-de-verificacion" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>dig</code>/<code>nslookup</code> a dominios externos funciona con <code>recursion yes;</code> y forwarders configurados.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Con <code>recursion no;</code>, ni los dominios externos ni los propios (por nombre corto) se resuelven — solo por FQDN dentro de zonas propias, si aplica.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>/var/log/named/queries.log</code> registra las consultas de los clientes.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El esclavo transfiere correctamente ambas zonas (directa e inversa) desde el maestro.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> El esclavo sigue resolviendo consultas aunque el maestro esté apagado.</li>
+</ul>
+<hr />
+<h2 id="alguna-duda">¿Alguna duda?<a class="headerlink" href="#alguna-duda" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

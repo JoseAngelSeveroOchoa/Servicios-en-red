@@ -2,18 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/</loc>
-         <lastmod>2026-09-21</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
          <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01_DHCP/</loc>
-         <lastmod>2026-09-21</lastmod>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
-         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01_DHCP_PRACTICA1/</loc>
-         <lastmod>2026-09-21</lastmod>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01_DHCP/UD01_DHCP_PRACTICA1/</loc>
+         <lastmod>2026-09-24</lastmod>
     </url>
     <url>
-         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01_DHCP_PRACTICA2/</loc>
-         <lastmod>2026-09-21</lastmod>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD01_DHCP/UD01_DHCP_PRACTICA2/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD02_DNS/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD02_DNS/UD02_DNS_PRACTICA1/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD02_DNS/UD02_DNS_PRACTICA2/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD03_WEBSERVER/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD03_WEBSERVER/UD03_PRACTICA1_Apache/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD03_WEBSERVER/UD03_PRACTICA2_VirtualHost_DNS/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD03_WEBSERVER/UD03_PRACTICA3_Autenticacion/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD03_WEBSERVER/UD03_PRACTICA4_SSL/</loc>
+         <lastmod>2026-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD03_WEBSERVER/UD03_PRACTICA5_Proxy/</loc>
+         <lastmod>2026-09-24</lastmod>
     </url>
 </urlset>

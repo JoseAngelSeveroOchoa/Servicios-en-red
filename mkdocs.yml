@@ -5,20 +5,32 @@ theme:
   name: material
   features:
     - navigation.sections
+    - navigation.expand
+    - navigation.indexes
     - content.code.copy
   language: es
 
 nav:
   - Inicio: index.md
-  - Unidades:
-    - UD01_DHCP: UD01_DHCP.md
-    - UD02_DNS: UD02_DNS.md
-  - Prácticas:
-    - UD01_DHCP_PRACTICA1: UD01_DHCP_PRACTICA1.md
-    - UD01_DHCP_PRACTICA2: UD01_DHCP_PRACTICA2.md
-    - UD02_DNS_PRACTICA1: UD02_DNS_PRACTICA1.md
-    - UD02_DNS_PRACTICA2: UD02_DNS_PRACTICA2.md
- 
+
+  - UD01 · DHCP:
+      - UD01_DHCP/index.md
+      - "Práctica 1": UD01_DHCP/UD01_DHCP_PRACTICA1.md
+      - "Práctica 2": UD01_DHCP/UD01_DHCP_PRACTICA2.md
+
+  - UD02 · DNS:
+      - UD02_DNS/index.md
+      - "Práctica 1": UD02_DNS/UD02_DNS_PRACTICA1.md
+      - "Práctica 2": UD02_DNS/UD02_DNS_PRACTICA2.md
+
+  - UD03 · Servidor Web:
+      - UD03_WEBSERVER/index.md
+      - "Práctica 1 · Apache": UD03_WEBSERVER/UD03_PRACTICA1_Apache.md
+      - "Práctica 2 · Virtual Host + DNS": UD03_WEBSERVER/UD03_PRACTICA2_VirtualHost_DNS.md
+      - "Práctica 3 · Autenticación": UD03_WEBSERVER/UD03_PRACTICA3_Autenticacion.md
+      - "Práctica 4 · SSL": UD03_WEBSERVER/UD03_PRACTICA4_SSL.md
+      - "Práctica 5 · Proxy": UD03_WEBSERVER/UD03_PRACTICA5_Proxy.md
+
 
 markdown_extensions:
   - admonition

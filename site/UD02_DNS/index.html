@@ -1,0 +1,1829 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://JoseAngelSeveroOchoa.github.io/Servicios-en-red/UD02_DNS/">
+      
+      
+        <link rel="prev" href="../UD01_DHCP/UD01_DHCP_PRACTICA2/">
+      
+      
+        <link rel="next" href="UD02_DNS_PRACTICA1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>UNIDAD 2: SERVICIO DNS - SERVICIOS EN RED</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unidad-2-servicio-dns" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="SERVICIOS EN RED" class="md-header__button md-logo" aria-label="SERVICIOS EN RED" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SERVICIOS EN RED
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UNIDAD 2: SERVICIO DNS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SERVICIOS EN RED" class="md-nav__button md-logo" aria-label="SERVICIOS EN RED" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SERVICIOS EN RED
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../UD01_DHCP/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD01 · DHCP
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD01 · DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD01_DHCP/UD01_DHCP_PRACTICA1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD01_DHCP/UD01_DHCP_PRACTICA2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD02 · DNS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD02 · DNS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="UD02_DNS_PRACTICA1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="UD02_DNS_PRACTICA2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../UD03_WEBSERVER/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD03 · Servidor Web
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD03 · Servidor Web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA1_Apache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 1 · Apache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA2_VirtualHost_DNS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 2 · Virtual Host + DNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA3_Autenticacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 3 · Autenticación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA4_SSL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 4 · SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UD03_WEBSERVER/UD03_PRACTICA5_Proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Práctica 5 · Proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-antes-de-que-existiera-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Antes de que existiera DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Antes de que existiera DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprobar-que-servidores-dns-tiene-configurado-un-equipo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprobar qué servidores DNS tiene configurado un equipo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-espacio-de-nombres-de-dominio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Espacio de nombres de dominio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Espacio de nombres de dominio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-dominio-raiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Dominio raíz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-dominios-de-primer-nivel-tld" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Dominios de primer nivel (TLD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-dominios-y-subdominios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Dominios y subdominios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-delegacion-de-dominios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Delegación de dominios
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-zonas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Zonas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Zonas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubicacion-de-las-zonas-en-debian-bind9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubicación de las zonas en Debian (bind9)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-registros-de-recursos-rr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Registros de recursos (RR)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Registros de recursos (RR)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-tipos-de-rr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Tipos de RR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Tipos de RR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#registro-soa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro SOA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registro-ns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro NS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registros-a-aaaa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registros A / AAAA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registro-cname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro CNAME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registro-mx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro MX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registro-ptr-resolucion-inversa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro PTR (resolución inversa)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registro-txt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registro TXT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tipos-de-servidor-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Tipos de servidor DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Tipos de servidor DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuraciones-tipicas-en-una-red" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuraciones típicas en una red
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-proceso-de-resolucion-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Proceso de resolución DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Proceso de resolución DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-consultas-recursivas-vs-iterativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Consultas recursivas vs. iterativas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-ejemplo-completo-resolucion-de-wwwyahoocom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Ejemplo completo: resolución de www.yahoo.com.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-roles-en-la-cadena-de-resolucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Roles en la cadena de resolución
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-resolucion-inversa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Resolución inversa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-responsabilidad-sobre-el-sistema-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Responsabilidad sobre el sistema DNS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-herramientas-de-diagnostico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Herramientas de diagnóstico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Herramientas de diagnóstico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nslookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nslookup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dig
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-configuracion-basica-de-un-servidor-dns-en-debian-bind9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Configuración básica de un servidor DNS en Debian (bind9)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alguna-duda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Alguna duda?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="unidad-2-servicio-dns">UNIDAD 2: SERVICIO DNS<a class="headerlink" href="#unidad-2-servicio-dns" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="1-introduccion">1. Introducción<a class="headerlink" href="#1-introduccion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>En una red TCP/IP los equipos se identifican mediante su dirección IP. Como usuarios nos resulta mucho más fácil recordar un nombre de dominio (<code>www.gva.es</code>) que una dirección IP (<code>193.144.127.85</code>).</li>
+<li>El servicio <strong>DNS</strong> proporciona el mecanismo de traducción entre nombres de dominio y direcciones IP.</li>
+<li>DNS no solo resuelve nombre → IP; también permite la <strong>resolución inversa</strong> (IP → nombre).</li>
+<li>Gracias a DNS, un dominio es independiente de su IP: puede cambiar de IP de forma transparente para el usuario, o incluso tener varias IPs a la vez (redundancia, balanceo de carga).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Nombres de dominio</th>
+<th>Nombres de host</th>
+<th>Hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ejemplos</td>
+<td><code>.org</code> <code>.net</code> <code>google.com</code></td>
+<td><code>pc1</code>, <code>a112</code>, <code>impresora1</code>…</td>
+<td>Ordenadores, impresoras, routers, servidores…</td>
+</tr>
+<tr>
+<td>Detalle</td>
+<td>Jerarquía de dominios y subdominios</td>
+<td>Nombre concreto de un equipo dentro de un dominio</td>
+<td>Cada host tiene un nombre y al menos una IP</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-antes-de-que-existiera-dns">2. Antes de que existiera DNS<a class="headerlink" href="#2-antes-de-que-existiera-dns" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Entre 1971 y 1972 se usaba un fichero de texto local, <code>hosts.txt</code>, que asociaba manualmente IPs y nombres.</li>
+<li>Hoy en día, ese mismo mecanismo sigue existiendo como <strong>archivo hosts</strong>, aunque ya solo se usa para excepciones puntuales (no como sistema principal de resolución):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Sistema</th>
+<th>Ubicación del archivo <code>hosts</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td><code>/etc/hosts</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td><code>C:\Windows\System32\drivers\etc\hosts</code></td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>timeline
+    title Historia (breve) del DNS
+    1971-1972 : Fichero local hosts.txt
+    1985 : Primera versión de DNS
+    Actualidad : Base de datos distribuida de nombres e IPs</code></pre>
+<h3 id="comprobar-que-servidores-dns-tiene-configurado-un-equipo">Comprobar qué servidores DNS tiene configurado un equipo<a class="headerlink" href="#comprobar-que-servidores-dns-tiene-configurado-un-equipo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Windows</span>
+ipconfig<span class="w"> </span>/all
+
+<span class="c1"># Linux</span>
+cat<span class="w"> </span>/etc/resolv.conf
+</code></pre></div>
+<hr />
+<h2 id="3-espacio-de-nombres-de-dominio">3. Espacio de nombres de dominio<a class="headerlink" href="#3-espacio-de-nombres-de-dominio" title="Permanent link">&para;</a></h2>
+<ul>
+<li>DNS se apoya en una <strong>base de datos distribuida</strong>: la información no está en un único sitio, sino repartida entre miles de servidores DNS por todo el mundo.</li>
+<li>Esa base de datos se organiza como un <strong>árbol invertido</strong>: cada nombre de dominio es una rama, y cada nodo se separa del anterior con un punto (<code>.</code>).</li>
+<li>Cada etiqueta (<em>label</em>) de un nombre de dominio puede tener como máximo 63 caracteres, y no distingue mayúsculas de minúsculas (<code>www.serviciosenred.es</code> = <code>WWW.SERVICIOSENRED.ES</code>).</li>
+</ul>
+<p><pre class="mermaid"><code>graph TD
+    Root["\".\" — dominio raíz&lt;br&gt;(root servers)"]
+    COM["com"]
+    ES["es"]
+    ORG["org"]
+    Root --&gt; COM
+    Root --&gt; ES
+    Root --&gt; ORG
+    ES --&gt; SER["serviciosenred.es"]
+    SER --&gt; WWW["www.serviciosenred.es"]
+    SER --&gt; FTP["ftp.serviciosenred.es"]</code></pre>
+<em>Figura 1: jerarquía del espacio de nombres de dominio.</em></p>
+<h3 id="31-dominio-raiz">3.1 Dominio raíz<a class="headerlink" href="#31-dominio-raiz" title="Permanent link">&para;</a></h3>
+<ul>
+<li>En teoría, todos los dominios acaban en un punto (<code>.</code>): el <strong>dominio raíz</strong>, un elemento nulo de 0 caracteres. En la práctica, ese punto final se omite porque los programas lo añaden por defecto.</li>
+<li>Un dominio se lee, formalmente, de derecha a izquierda, aunque en el uso diario lo hacemos de izquierda a derecha.</li>
+<li>El nombre que incluye ese punto final explícito se llama <strong>FQDN</strong> (<em>Fully Qualified Domain Name</em>, nombre de dominio totalmente cualificado). Ejemplos: <code>www.yahoo.com.</code>, <code>smtp.severoochoa.com.</code></li>
+</ul>
+<h3 id="32-dominios-de-primer-nivel-tld">3.2 Dominios de primer nivel (TLD)<a class="headerlink" href="#32-dominios-de-primer-nivel-tld" title="Permanent link">&para;</a></h3>
+<p>Los dominios que cuelgan directamente del dominio raíz se llaman <strong>TLD</strong> (<em>Top Level Domains</em>). Existen tres tipos:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Significado</th>
+<th>Restricción</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>gTLD</strong></td>
+<td>Genéricos</td>
+<td>Cualquiera puede registrarlos</td>
+<td><code>.com</code>, <code>.net</code>, <code>.org</code></td>
+</tr>
+<tr>
+<td><strong>sTLD</strong></td>
+<td>Patrocinados</td>
+<td>Restringidos a una entidad concreta</td>
+<td><code>.gov</code>, <code>.edu</code>, <code>.cat</code></td>
+</tr>
+<tr>
+<td><strong>ccTLD</strong></td>
+<td>Código de país</td>
+<td>Asociados a una zona geográfica</td>
+<td><code>.es</code>, <code>.fr</code>, <code>.us</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>TLD</th>
+<th>Uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.com</code></td>
+<td>Organizaciones comerciales (<code>google.com</code>)</td>
+</tr>
+<tr>
+<td><code>.edu</code></td>
+<td>Organizaciones educativas</td>
+</tr>
+<tr>
+<td><code>.net</code></td>
+<td>Internet y telecomunicaciones</td>
+</tr>
+<tr>
+<td><code>.org</code></td>
+<td>Organizaciones sin ánimo de lucro</td>
+</tr>
+<tr>
+<td><code>.gov</code></td>
+<td>Organizaciones gubernamentales de EE. UU.</td>
+</tr>
+<tr>
+<td><code>.int</code></td>
+<td>Organizaciones internacionales</td>
+</tr>
+<tr>
+<td><code>.mobi</code></td>
+<td>Empresas o servicios de telefonía móvil</td>
+</tr>
+</tbody>
+</table>
+<p>El <strong>ICANN</strong> (<em>Internet Corporation for Assigned Names and Numbers</em>) es el organismo encargado de gestionar el dominio raíz y los TLD.</p>
+<h3 id="33-dominios-y-subdominios">3.3 Dominios y subdominios<a class="headerlink" href="#33-dominios-y-subdominios" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>serviciosenred.es.</code> es un subdominio de <code>es.</code>, y <code>www.serviciosenred.es.</code> es a su vez un subdominio de <code>serviciosenred.es.</code></li>
+<li>Los dominios que cuelgan del raíz son de primer nivel (TLD); los que cuelgan de un TLD son de segundo nivel, y así sucesivamente.</li>
+</ul>
+<h3 id="34-delegacion-de-dominios">3.4 Delegación de dominios<a class="headerlink" href="#34-delegacion-de-dominios" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Al ser una base de datos distribuida, DNS permite una <strong>administración descentralizada</strong>: el administrador de un dominio puede dividirlo en subdominios y <strong>delegar</strong> el control de alguno de ellos a otra autoridad.</li>
+<li>Delegar no significa perder el control para siempre: el dominio padre puede retomar la autoridad delegada cuando quiera.</li>
+<li>La entidad que recibe la delegación asume también la responsabilidad de mantener actualizados los registros de ese subdominio.</li>
+</ul>
+<hr />
+<h2 id="4-zonas">4. Zonas<a class="headerlink" href="#4-zonas" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Zona ≠ Dominio</p>
+<p>Un <strong>dominio</strong> es un subárbol del espacio de nombres. Una <strong>zona</strong> es la porción de ese árbol cuyos datos están realmente almacenados en un servidor DNS concreto. Los datos de un mismo dominio pueden repartirse en varias zonas, en varios servidores distintos.</p>
+</div>
+<ul>
+<li>El servidor de nombres que almacena la información de una zona se dice que tiene <strong>autoridad</strong> sobre ella.</li>
+<li>Una zona es, en la práctica, un archivo con una serie de registros de recursos (<strong>RR</strong>, <em>Resource Records</em>).</li>
+<li>Un mismo servidor DNS puede tener autoridad sobre varias zonas distintas (por ejemplo, <code>serviciosenred.es.</code> y <code>seguridadinformatica.es.</code> a la vez).</li>
+</ul>
+<p>Ejemplo de fragmento de zona para <code>serviciosenred.es.</code>:</p>
+<div class="highlight"><pre><span></span><code>serviciosenred.es.        IN   NS      ns1.serviciosenred.es.
+ns1.serviciosenred.es.    IN   A       192.168.1.20
+andy.serviciosenred.es.   IN   A       192.168.1.21
+lucas.serviciosenred.es.  IN   A       192.168.1.22
+www.serviciosenred.es.    IN   CNAME   andy.serviciosenred.es.
+ftp.serviciosenred.es.    IN   CNAME   lucas.serviciosenred.es.
+</code></pre></div>
+<p>Si de <code>serviciosenred.es.</code> cuelgan los subdominios <code>teoria.serviciosenred.es.</code> y <code>practicas.serviciosenred.es.</code>, y se decide delegar solo <code>practicas.serviciosenred.es.</code>, existirá <strong>otro</strong> servidor DNS autorizado para ese subdominio, con su propio archivo de zona.</p>
+<h3 id="ubicacion-de-las-zonas-en-debian-bind9">Ubicación de las zonas en Debian (bind9)<a class="headerlink" href="#ubicacion-de-las-zonas-en-debian-bind9" title="Permanent link">&para;</a></h3>
+<p>En Debian, usando <code>bind9</code> como servidor DNS, las zonas configuradas se declaran en:</p>
+<div class="highlight"><pre><span></span><code>/etc/bind/named.conf.local
+</code></pre></div>
+<div class="highlight"><span class="filename">Ejemplo de declaración de zona</span><pre><span></span><code>zone "serviciosenred.es" {
+    type master;
+    file "/etc/bind/db.serviciosenred.es";
+};
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Comprueba la ruta real en tu sistema</p>
+<p>Según la instalación, los archivos de zona pueden vivir en <code>/etc/bind/</code> (zonas maestras estáticas) o en <code>/var/cache/bind/</code> (zonas dinámicas o transferidas desde un maestro, que bind9 necesita poder escribir). Verifica siempre la ruta configurada en tu propio <code>named.conf.local</code> antes de dar por buena una ubicación.</p>
+</div>
+<hr />
+<h2 id="5-registros-de-recursos-rr">5. Registros de recursos (RR)<a class="headerlink" href="#5-registros-de-recursos-rr" title="Permanent link">&para;</a></h2>
+<p>Cada línea de un archivo de zona es un <strong>registro de recursos</strong> (<em>Resource Record</em>, RR). Los RR se envían en las preguntas y respuestas entre clientes y servidores DNS, y tienen este formato general:</p>
+<div class="highlight"><pre><span></span><code>Propietario   TTL   Clase   Tipo   RDATA
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Propietario</strong></td>
+<td>Nombre de máquina o dominio al que pertenece el recurso. <code>@</code> representa el nombre de la zona.</td>
+</tr>
+<tr>
+<td><strong>TTL</strong> (<em>Time To Live</em>)</td>
+<td>Segundos que el RR puede permanecer en caché antes de descartarse. Opcional: puede fijarse un TTL global para toda la zona.</td>
+</tr>
+<tr>
+<td><strong>Clase</strong></td>
+<td>Familia de protocolos. Casi siempre <code>IN</code> (Internet, TCP/IP).</td>
+</tr>
+<tr>
+<td><strong>Tipo</strong></td>
+<td>El tipo de registro (ver tabla siguiente).</td>
+</tr>
+<tr>
+<td><strong>RDATA</strong></td>
+<td>Datos específicos de ese tipo (p. ej., la IP en un registro <code>A</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="51-tipos-de-rr">5.1 Tipos de RR<a class="headerlink" href="#51-tipos-de-rr" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Registro</th>
+<th>Nombre</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SOA</strong></td>
+<td>Start Of Authority</td>
+<td>Identifica al servidor autoritativo de la zona y sus parámetros de configuración. Solo puede haber uno por zona.</td>
+</tr>
+<tr>
+<td><strong>NS</strong></td>
+<td>Name Server</td>
+<td>Identifica los servidores de nombres autorizados para una zona.</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>Address</td>
+<td>Asocia un FQDN con una dirección IPv4.</td>
+</tr>
+<tr>
+<td><strong>AAAA</strong></td>
+<td>Address (IPv6)</td>
+<td>Asocia un FQDN con una dirección IPv6.</td>
+</tr>
+<tr>
+<td><strong>CNAME</strong></td>
+<td>Canonical Name</td>
+<td>Define un alias hacia otro nombre ya definido en un registro <code>A</code>/<code>AAAA</code>.</td>
+</tr>
+<tr>
+<td><strong>MX</strong></td>
+<td>Mail Exchanger</td>
+<td>Indica los servidores de correo del dominio, y su prioridad.</td>
+</tr>
+<tr>
+<td><strong>PTR</strong></td>
+<td>Pointer</td>
+<td>Asocia una IP con un nombre de dominio. Se usa en resolución inversa.</td>
+</tr>
+<tr>
+<td><strong>TXT</strong></td>
+<td>Text</td>
+<td>Almacena texto arbitrario asociado a un dominio.</td>
+</tr>
+<tr>
+<td><strong>SRV</strong></td>
+<td>Service</td>
+<td>Asocia nombres con servidores y puertos de servicios concretos (SIP, LDAP, XMPP…).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="registro-soa">Registro SOA<a class="headerlink" href="#registro-soa" title="Permanent link">&para;</a></h4>
+<p>Especifica información autoritativa sobre la zona: servidor maestro, contacto del administrador, número de serie y varios temporizadores.</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MNAME</strong></td>
+<td>FQDN del servidor DNS maestro del dominio.</td>
+</tr>
+<tr>
+<td><strong>Contacto</strong></td>
+<td>Correo del administrador (con el <code>@</code> sustituido por un <code>.</code>).</td>
+</tr>
+<tr>
+<td><strong>Serial</strong></td>
+<td>Versión del fichero de zona; se incrementa en cada cambio. Formato habitual: <code>aaaammdd</code> + 2-3 dígitos (ej. <code>20190425001</code>).</td>
+</tr>
+<tr>
+<td><strong>Refresh</strong></td>
+<td>Cada cuánto pregunta un esclavo al maestro si hay cambios.</td>
+</tr>
+<tr>
+<td><strong>Retry</strong></td>
+<td>Si falla la transferencia, cuánto espera el esclavo para reintentarlo.</td>
+</tr>
+<tr>
+<td><strong>Expire</strong></td>
+<td>Tiempo máximo que un esclavo sigue respondiendo sin contactar con el maestro antes de declararse no autorizado.</td>
+</tr>
+<tr>
+<td><strong>TTL negativo</strong></td>
+<td>Tiempo mínimo que se cachean las respuestas negativas.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>serviciosenred.es.   IN   SOA   ns1.serviciosenred.es. super.serviciosenred.es. (
+                              20190425001   ; serial
+                              604800        ; refresh (7 días)
+                              86400         ; retry (1 día)
+                              2419200       ; expire (28 días)
+                              604800 )      ; TTL negativo (7 días)
+</code></pre></div>
+<h4 id="registro-ns">Registro NS<a class="headerlink" href="#registro-ns" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>serviciosenred.es.   IN   NS   ns1.serviciosenred.es.   ; maestro
+serviciosenred.es.   IN   NS   ns2.serviciosenred.es.   ; esclavo
+
+ns1.serviciosenred.es.   IN   A   192.168.10.20
+ns2.serviciosenred.es.   IN   A   192.168.10.21
+
+practicas.serviciosenred.es.   IN   NS   ns1.practicas.serviciosenred.es.
+</code></pre></div>
+<h4 id="registros-a-aaaa">Registros A / AAAA<a class="headerlink" href="#registros-a-aaaa" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>ns1.serviciosenred.es.    IN   A      192.168.10.20
+andy.serviciosenred.es.   IN   A      192.168.10.22
+andy.serviciosenred.es.   IN   AAAA   2001:0db8:0000:0000:0000:8a2e:0370:7334
+</code></pre></div>
+<h4 id="registro-cname">Registro CNAME<a class="headerlink" href="#registro-cname" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>andy.serviciosenred.es.   IN   A       192.168.1.22
+www.serviciosenred.es.    IN   CNAME   andy.serviciosenred.es.
+ftp.serviciosenred.es.    IN   CNAME   andy.serviciosenred.es.
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">CNAME no se usa a la derecha de un MX o un NS</p>
+<p>Un registro CNAME puede apuntar a otro dominio (<code>www.serviciosenred.es. IN CNAME www.serviciosenred.com.</code>), pero la parte derecha de un <code>MX</code> o un <code>NS</code> siempre debe ser un nombre definido con <code>A</code>/<code>AAAA</code>, nunca un <code>CNAME</code>.</p>
+</div>
+<h4 id="registro-mx">Registro MX<a class="headerlink" href="#registro-mx" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>serviciosenred.es.        IN   MX   10   mail1.serviciosenred.es.
+serviciosenred.es.        IN   MX   20   mail2.serviciosenred.es.
+
+mail1.serviciosenred.es.  IN   A    192.168.1.100
+mail2.serviciosenred.es.  IN   A    192.168.1.101
+</code></pre></div>
+<p>A menor número de preferencia, mayor prioridad: <code>mail1</code> se intentará antes que <code>mail2</code>. Si hay varios registros con la misma preferencia, se prueban todos antes de pasar al siguiente.</p>
+<h4 id="registro-ptr-resolucion-inversa">Registro PTR (resolución inversa)<a class="headerlink" href="#registro-ptr-resolucion-inversa" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>20.1.168.192.in-addr.arpa.   IN   PTR   ns1.serviciosenred.es.
+21.1.168.192.in-addr.arpa.   IN   PTR   ns2.serviciosenred.es.
+22.1.168.192.in-addr.arpa.   IN   PTR   andy.serviciosenred.es.
+</code></pre></div>
+<h4 id="registro-txt">Registro TXT<a class="headerlink" href="#registro-txt" title="Permanent link">&para;</a></h4>
+<p>Permite asociar texto arbitrario a un dominio (hasta 255 caracteres por cadena). Se usa como documentación o para verificar la propiedad de un dominio ante un proveedor:</p>
+<div class="highlight"><pre><span></span><code>serviciosenred.es.   IN   TXT   "google-site-verification=rXOxyZounnZasA8Z7oaD3c14JdjS9aKSWvsR1EbUSIQ"
+</code></pre></div>
+<blockquote>
+<p>Existen muchos más tipos de registro. Listado completo: <a href="https://es.wikipedia.org/wiki/Anexo:Tipos_de_registros_DNS">es.wikipedia.org/wiki/Anexo:Tipos_de_registros_DNS</a></p>
+</blockquote>
+<hr />
+<h2 id="6-tipos-de-servidor-dns">6. Tipos de servidor DNS<a class="headerlink" href="#6-tipos-de-servidor-dns" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Maestro / primario</strong></td>
+<td>Tiene los archivos de zona en lectura-escritura. El administrador edita aquí.</td>
+</tr>
+<tr>
+<td><strong>Esclavo / secundario</strong></td>
+<td>Obtiene sus archivos de zona del maestro mediante <em>transferencia de zona</em>. Son de solo lectura.</td>
+</tr>
+<tr>
+<td><strong>Caché</strong></td>
+<td>No tiene autoridad sobre ninguna zona; solo pregunta a otros servidores y guarda las respuestas en caché.</td>
+</tr>
+<tr>
+<td><strong>Forwarder (reenviador)</strong></td>
+<td>Reenvía las consultas que no puede resolver a otro servidor DNS designado, en vez de hacer la búsqueda iterativa él mismo.</td>
+</tr>
+<tr>
+<td><strong>Solo autorizado (<em>auth only</em>)</strong></td>
+<td>Responde solo sobre sus propias zonas: no tiene recursividad activada, no reenvía ni actúa como caché.</td>
+</tr>
+<tr>
+<td><strong>Raíz (<em>root server</em>)</strong></td>
+<td>Conoce los servidores autorizados de cada TLD. Existen 13, replicados mundialmente mediante <em>anycasting</em>; se nombran <code>letra.root-servers.net</code> (A a M).</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Un servidor puede combinar varios roles</p>
+<p>Un mismo servidor DNS puede ser maestro para una zona y esclavo para otra a la vez. Tener varios esclavos para una misma zona, repartidos en redes y ubicaciones distintas, mejora la tolerancia a fallos, reparte la carga y acelera las respuestas.</p>
+</div>
+<h3 id="configuraciones-tipicas-en-una-red">Configuraciones típicas en una red<a class="headerlink" href="#configuraciones-tipicas-en-una-red" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Mismo dominio:</strong> los servidores DNS de la red pertenecen al mismo dominio que el equipo cliente.</li>
+<li><strong>ISP:</strong> los servidores DNS son los de tu proveedor de Internet.</li>
+<li><strong>Solo caché:</strong> los servidores DNS configurados son únicamente una caché, sin autoridad sobre ningún dominio propio.</li>
+</ul>
+<hr />
+<h2 id="7-proceso-de-resolucion-dns">7. Proceso de resolución DNS<a class="headerlink" href="#7-proceso-de-resolucion-dns" title="Permanent link">&para;</a></h2>
+<h3 id="71-consultas-recursivas-vs-iterativas">7.1 Consultas recursivas vs. iterativas<a class="headerlink" href="#71-consultas-recursivas-vs-iterativas" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Consulta recursiva</th>
+<th>Consulta iterativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quién hace el trabajo</strong></td>
+<td>El servidor consultado se encarga de seguir la cadena hasta resolver el nombre (o determinar que no existe).</td>
+<td>El servidor da la mejor respuesta que tiene; si no la conoce, indica a qué otro servidor preguntar.</td>
+</tr>
+<tr>
+<td><strong>Quién pregunta a quién</strong></td>
+<td>El cliente solo habla con su servidor DNS local; este habla con el resto.</td>
+<td>El propio servidor (o cliente) va preguntando servidor a servidor.</td>
+</tr>
+<tr>
+<td><strong>Tipos de respuesta</strong></td>
+<td>Positiva / Negativa / Error</td>
+<td>Positiva / Negativa / Referencia (a otro servidor) / Error</td>
+</tr>
+</tbody>
+</table>
+<p>En la práctica: el cliente lanza una consulta <strong>recursiva</strong> a su servidor DNS local (normalmente el del ISP), y ese servidor local hace <strong>consultas iterativas</strong> en cadena (root → TLD → autoritativo) hasta obtener la respuesta.</p>
+<h3 id="72-ejemplo-completo-resolucion-de-wwwyahoocom">7.2 Ejemplo completo: resolución de <code>www.yahoo.com.</code><a class="headerlink" href="#72-ejemplo-completo-resolucion-de-wwwyahoocom" title="Permanent link">&para;</a></h3>
+<p><pre class="mermaid"><code>sequenceDiagram
+    participant C as Cliente DNS
+    participant L as Servidor DNS local (ISP)
+    participant R as Servidor raíz
+    participant T as Servidor TLD .com
+    participant A as Servidor autoritativo (yahoo.com)
+
+    C-&gt;&gt;L: Consulta recursiva: www.yahoo.com
+    L-&gt;&gt;R: Consulta iterativa: www.yahoo.com
+    R-&gt;&gt;L: Referencia a servidores TLD .com
+    L-&gt;&gt;T: Consulta iterativa: www.yahoo.com
+    T-&gt;&gt;L: Referencia al servidor autoritativo de yahoo.com
+    L-&gt;&gt;A: Consulta iterativa: www.yahoo.com
+    A-&gt;&gt;L: Respuesta: IP de www.yahoo.com
+    L-&gt;&gt;C: Respuesta final (y se guarda en caché)</code></pre>
+<em>Figura 2: el cliente solo habla con su servidor DNS local; el resto de la cadena la recorre el propio servidor local mediante consultas iterativas.</em></p>
+<ul>
+<li>Si el cliente ya tiene la respuesta en su propia caché, el proceso ni siquiera empieza.</li>
+<li>El servidor DNS local guarda en caché tanto la respuesta final como las direcciones de los servidores intermedios que ha ido consultando, para acelerar futuras resoluciones.</li>
+</ul>
+<h3 id="73-roles-en-la-cadena-de-resolucion">7.3 Roles en la cadena de resolución<a class="headerlink" href="#73-roles-en-la-cadena-de-resolucion" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cliente DNS</strong></td>
+<td>Mantiene su propia caché para acelerar resoluciones repetidas.</td>
+</tr>
+<tr>
+<td><strong>Servidor DNS local</strong></td>
+<td>Recibe la consulta del cliente; mira en su caché o inicia una búsqueda recursiva.</td>
+</tr>
+<tr>
+<td><strong>Servidores raíz y TLD</strong></td>
+<td>Dan información sobre qué servidor es autoritativo, sin resolver ellos mismos el nombre completo.</td>
+</tr>
+<tr>
+<td><strong>Servidor autoritativo</strong></td>
+<td>Da la respuesta final: la IP del dominio consultado.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-resolucion-inversa">8. Resolución inversa<a class="headerlink" href="#8-resolucion-inversa" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Consiste en obtener el nombre de dominio a partir de una dirección IP, en vez de al revés.</li>
+<li>Las direcciones IP se tratan como nombres que cuelgan de un dominio especial: <strong><code>.arpa</code></strong> (<em>Address and Routing Parameter Area</em>), un TLD genérico reservado para la infraestructura de Internet.</li>
+<li><code>in-addr.arpa</code> para IPv4.</li>
+<li><code>ip6.arpa</code> para IPv6.</li>
+<li>Al mapear una IP, se invierte el orden de los octetos. Por ejemplo, <code>192.168.1.21</code> se mapea como <code>21.1.168.192.in-addr.arpa</code>.</li>
+</ul>
+<p>Ejemplo de zona de resolución inversa para la red <code>192.168.1.0/24</code>:</p>
+<div class="highlight"><pre><span></span><code>1.168.192.in-addr.arpa.      IN   NS    ns1.serviciosenred.es.
+20.1.168.192.in-addr.arpa.   IN   PTR   ns1.serviciosenred.es.
+21.1.168.192.in-addr.arpa.   IN   PTR   andy.serviciosenred.es.
+22.1.168.192.in-addr.arpa.   IN   PTR   lucas.serviciosenred.es.
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Las zonas directa e inversa son independientes</p>
+<p>No es obligatorio que quien administra la zona directa de un dominio administre también su zona inversa correspondiente. Son responsabilidades distintas, y es cosa de los administradores mantenerlas coherentes entre sí.</p>
+</div>
+<p>El proceso de resolución inversa sigue la misma lógica que el directo (consultas recursivas, iterativas, caché, TTL…), solo que preguntando por una IP en vez de por un nombre.</p>
+<hr />
+<h2 id="9-responsabilidad-sobre-el-sistema-dns">9. Responsabilidad sobre el sistema DNS<a class="headerlink" href="#9-responsabilidad-sobre-el-sistema-dns" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Organismo</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ICANN</strong> (<em>Internet Corporation for Assigned Names and Numbers</em>)</td>
+<td>Organización sin ánimo de lucro. Asigna direcciones IP e identificadores de protocolo, gestiona el sistema de nombres de dominio y administra los servidores raíz. Acredita a los <em>registrars</em> (registradores de dominios).</td>
+</tr>
+<tr>
+<td><strong>IANA</strong> (<em>Internet Assigned Numbers Authority</em>)</td>
+<td>Mantiene y publica las zonas de los servidores raíz, asigna el espacio de nombres a los RIR (registradores regionales) y supervisa las operaciones sobre root servers y TLD.</td>
+</tr>
+<tr>
+<td><strong>Registradores (<em>registrars</em>)</strong></td>
+<td>Acreditados por ICANN. Gestionan altas, bajas y modificaciones de los servidores de autoridad de los dominios que registran.</td>
+</tr>
+<tr>
+<td><strong>Operadores de servidores raíz</strong></td>
+<td>12 operadores gestionan los 13 servidores raíz (múltiples copias distribuidas mediante <em>anycast</em>). Más información: <a href="https://root-servers.org/">root-servers.org</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-herramientas-de-diagnostico">10. Herramientas de diagnóstico<a class="headerlink" href="#10-herramientas-de-diagnostico" title="Permanent link">&para;</a></h2>
+<h3 id="nslookup"><code>nslookup</code><a class="headerlink" href="#nslookup" title="Permanent link">&para;</a></h3>
+<p>Programa para consultar servidores DNS: comprobar que un nombre se resuelve correctamente, diagnosticar problemas de configuración, o consultar directamente registros de recursos. Disponible tanto en Linux/Unix como en Windows.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Modo no interactivo</span>
+nslookup<span class="w"> </span>www.serviciosenred.es
+
+<span class="c1"># Modo interactivo</span>
+nslookup
+&gt;<span class="w"> </span>server<span class="w"> </span><span class="m">8</span>.8.8.8
+&gt;<span class="w"> </span>www.serviciosenred.es
+&gt;<span class="w"> </span><span class="nb">exit</span>
+</code></pre></div>
+<h3 id="dig"><code>dig</code><a class="headerlink" href="#dig" title="Permanent link">&para;</a></h3>
+<p>Herramienta más flexible y detallada para consultar servidores DNS, muy usada para depurar problemas gracias a la claridad de su salida. También disponible en Linux/Unix y Windows.</p>
+<div class="highlight"><pre><span></span><code>dig<span class="w"> </span>www.serviciosenred.es
+dig<span class="w"> </span>www.serviciosenred.es<span class="w"> </span>MX
+dig<span class="w"> </span>-x<span class="w"> </span><span class="m">192</span>.168.1.21<span class="w">          </span><span class="c1"># resolución inversa</span>
+</code></pre></div>
+<hr />
+<h2 id="11-configuracion-basica-de-un-servidor-dns-en-debian-bind9">11. Configuración básica de un servidor DNS en Debian (bind9)<a class="headerlink" href="#11-configuracion-basica-de-un-servidor-dns-en-debian-bind9" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Instala el paquete <code>bind9</code>:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>bind9<span class="w"> </span>bind9utils<span class="w"> </span>dnsutils
+</code></pre></div></li>
+<li>Declara tu zona en <code>/etc/bind/named.conf.local</code>:
+   <div class="highlight"><pre><span></span><code>zone "serviciosenred.es" {
+    type master;
+    file "/etc/bind/db.serviciosenred.es";
+};
+</code></pre></div></li>
+<li>Crea el archivo de zona (puedes partir de la plantilla <code>/etc/bind/db.local</code>) con tus registros <code>SOA</code>, <code>NS</code>, <code>A</code>, <code>CNAME</code>, etc.</li>
+<li>Si vas a resolver también en modo inverso, declara además la zona <code>in-addr.arpa</code> correspondiente.</li>
+<li>Comprueba la sintaxis y reinicia el servicio:
+   <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>named-checkzone<span class="w"> </span>serviciosenred.es<span class="w"> </span>/etc/bind/db.serviciosenred.es
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>bind9
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>bind9
+</code></pre></div></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Verifica siempre con dig o nslookup contra tu propio servidor</p>
+<p><div class="highlight"><pre><span></span><code>dig<span class="w"> </span>@127.0.0.1<span class="w"> </span>www.serviciosenred.es
+</code></pre></div>
+Apuntar la consulta contra <code>127.0.0.1</code> (o la IP de tu propio servidor) te asegura que estás probando tu configuración, y no la respuesta cacheada de otro DNS.</p>
+</div>
+<hr />
+<h2 id="alguna-duda">¿Alguna duda?<a class="headerlink" href="#alguna-duda" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.indexes", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
